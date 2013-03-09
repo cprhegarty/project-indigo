@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginGUI extends JFrame implements ActionListener {
+public class AdminLoginGUI extends JFrame implements ActionListener {
 	
 	static final long serialVersionUID = 1L;
 	
@@ -35,7 +35,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 	JLabel PassLabel;
 	
 	JTextField P_No;
-	JTextField Pass;
+	JPasswordField Pass;
 	
 	JButton enterBtn;
 	JButton enterpressedBtn;
@@ -49,10 +49,10 @@ public class LoginGUI extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginGUI frame = new LoginGUI();
-					frame.setTitle("Login");
+					AdminLoginGUI frame = new AdminLoginGUI();
+					frame.setTitle(" Administrator Login");
 		
-					 frame.getContentPane().setBackground(Color.WHITE);
+					 frame.getContentPane().setBackground(Color.CYAN);
 					
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -67,7 +67,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 	/**
 	 * Create the main application window.
 	 */
-	public LoginGUI() {
+	public AdminLoginGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		/*
@@ -87,14 +87,9 @@ public class LoginGUI extends JFrame implements ActionListener {
 		imagePane = (JPanel) createImageDisplay();
 		getContentPane().add(imagePane, BorderLayout.NORTH);
 		
-		/*ImageIcon harpImage = new ImageIcon("C:/Users/Robert/Desktop/harp.jpg");
-		JLabel harpLabel = new JLabel(harpImage);
-		contentPane.add(harpLabel);*/
-		
 		P_NoLabel = new JLabel();
-		P_NoLabel.setText("Polling Number:");
+		P_NoLabel.setText("ID:");
 		P_No = new JTextField(10);
-		P_No.setToolTipText("Please enter your Polling Number");
 		P_No.addActionListener(this);
 		
 		
@@ -102,47 +97,22 @@ public class LoginGUI extends JFrame implements ActionListener {
 		PassLabel = new JLabel();
 		PassLabel.setText("Password:");
 		Pass = new JPasswordField(10);
-		Pass.setToolTipText("Please enter your Password");
 		Pass.addActionListener(this);
-		
-		//enter = new JButton("Enter");
-		//help = new JButton("Help");
-		//help.addActionListener(this);
 		
 		ImageIcon enterImg = new ImageIcon("enterbutton.png");   
 		enterBtn = new JButton(enterImg);
 		enterBtn.setBorder(null);
 		enterBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		enterBtn.setPressedIcon(new ImageIcon("enterpressed.png"));
-		//enterBtn.addActionListener(this);
+		enterBtn.addActionListener(this);
 		
-		enterBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev)
-            {
-				enterBtn_actionPerformed(ev);
-	        }
-			});
-
-		
-		
-		
-		ImageIcon helpImg = new ImageIcon("helpbutton.png");   
-		helpBtn = new JButton(helpImg);
-		helpBtn.setBorder(null);
-		helpBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		helpBtn.setPressedIcon(new ImageIcon("helppressed.png"));
-		helpBtn.addActionListener(this);
-		
-		//contentPane = new JPanel(new GridLayout(3,1));
 		contentPane.add(P_NoLabel);
 		contentPane.add(P_No);
 		contentPane.add(PassLabel);
 		contentPane.add(Pass);
 		contentPane.add(enterBtn);
-		contentPane.add(helpBtn);
 	}
 
-	
 	
 	
 	/**
@@ -155,10 +125,6 @@ public class LoginGUI extends JFrame implements ActionListener {
 		 * TODO Define a layout for the content pane
 		 */
 		
-		
-		
-		
-		
 		return pane;
 	}
 	
@@ -168,29 +134,13 @@ public class LoginGUI extends JFrame implements ActionListener {
 	public Container createImageDisplay()  {
 		JPanel imageDisplay = new JPanel();
 		
-		/*
-		 * TODO
-		 * 		Define a layout for this container
-		 * 		Create the number display
-		 * 		Choose appropriate display font/size
-		 */
-		
-		//JTextField input = new JTextField(20);
-		
-		
-		/*imageDisplay.setLayout(new BorderLayout());
-		imageDisplay.add(input, BorderLayout.NORTH);*/
-		
 		ImageIcon harpImage = new ImageIcon("harp.png");
 		JLabel harpLabel = new JLabel(harpImage);
 		
 		ImageIcon loginImage = new ImageIcon("login.png");
 		JLabel loginLabel = new JLabel(loginImage);
-	
-	
+
 		imageDisplay.add(harpLabel);
-		//imageDisplay.add(loginLabel);
-		
 		
 		return imageDisplay;
 	}
@@ -209,31 +159,24 @@ public class LoginGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		
-		if(ev.getSource()==helpBtn) {
-			//System.exit(0);
-			LoginHelpGUI frame = new LoginHelpGUI();
-			frame.setTitle("Login Help");
-			frame.getContentPane().setBackground(Color.WHITE);
-			frame.setVisible(true);
+		/*if(ev.getSource()==enterBtn) {
+			//P_No.getText();
+			if(username = P_No) {
+				System.out.println("Success");
+			}
 		}
-	}
-	
+			
 		
+	/*	if(ev.getSource()==Pass) {
+			//P_No.getText();
+			if(Pass.getText() == "4321") {
+				System.out.println("Success");
+			}
+		}*/
 		
-		private void enterBtn_actionPerformed(ActionEvent ev)
-		    {
-		        System.out.println("login event called.");
-		        String username = new String(P_No.getText());
-		        String password = new String(Pass.getText());
-		    
-		        if(username.equals("1234") && password.equals("4321")) 
-		                {
-		        	System.out.println("Success");
-		                }
-		        else
-		        {
-		        	System.out.println("Denied");
-		        }
+		//if(ev.getSource()==enterBtn) {
+		//P_No.getText();
+		
 	
 	}
 }
