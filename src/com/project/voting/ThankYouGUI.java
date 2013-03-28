@@ -5,45 +5,52 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//Authors: Gareth Hayden
 
-
-	public class LoginHelpGUI extends JFrame implements ActionListener {
+	public class ThankYouGUI extends JFrame implements ActionListener {
 		
 		static final long serialVersionUID = 1L;
 		
 		JPanel contentPane;
 		JPanel imagePane;
 		
-		JButton backBtn;
-		//JButton backImg;
+		JButton clearBtn;
+		JButton finishBtn;
+		JButton backImg;
+		JButton helpBtn;
 		
-
-
-		/**
-		 * Launch the application.
-		 */
+		
 		public static void main(String[] args) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						LoginHelpGUI frame = new LoginHelpGUI();
-						frame.setTitle("Login Help");
+						ThankYouGUI frame = new ThankYouGUI();
+						frame.setTitle("Voting Page");
 						
 						 frame.getContentPane().setBackground(Color.WHITE);
+						 
+						
 						
 						frame.setVisible(true);
+						
+						 
+						 
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -51,21 +58,17 @@ import javax.swing.JPanel;
 			});
 		}
 		
-		/**
-		 * Create the main application window.
-		 */
-		public LoginHelpGUI() {
-			//super("Login HELP");
+		public ThankYouGUI() {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
-			/*
-			 * You are not required to stick the the following dimensions
-			 * Feel free to choose your own
-			 */
 			
-			setIconImage(new ImageIcon("progicon.png").getImage()); 
 			
-			setBounds(0, 0, 550, 560);
+			setIconImage(new ImageIcon("images/progicon.png").getImage()); 
+			
+			//setBounds(0, 0, 550, 650);
+			setBounds(0, 0, 670, 980);
+			setResizable(false);
+			
 			
 			contentPane = createContentPane();
 			setContentPane(contentPane);
@@ -74,31 +77,10 @@ import javax.swing.JPanel;
 			getContentPane().add(imagePane, BorderLayout.NORTH);
 			
 			
-			ImageIcon backImg = new ImageIcon("returnbutton.png");   
-			backBtn = new JButton(backImg);
-			backBtn.setBorder(null);
-			backBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			backBtn.setPressedIcon(new ImageIcon("backpressed.png"));
-			backBtn.addActionListener(this);
-			
-			contentPane.add(backBtn);
-			
 		}
 		
-		
-		
-		/**
-		 * Set up the content pane
-		 */
 		private JPanel createContentPane() {
 			JPanel pane = new JPanel();
-			
-			/*
-			 * TODO Define a layout for the content pane
-			 */
-			
-			
-			
 			
 			
 			return pane;
@@ -110,28 +92,19 @@ import javax.swing.JPanel;
 		public Container createImageDisplay()  {
 			JPanel imageDisplay = new JPanel();
 			
-			/*
-			 * TODO
-			 * 		Define a layout for this container
-			 * 		Create the number display
-			 * 		Choose appropriate display font/size
-			 */
+	
 			
+            ImageIcon section1 = new ImageIcon("images/thankyou.png");
 			
+			JLabel section1Label = new JLabel(section1);
 			
+            //ImageIcon section2 = new ImageIcon("images/section2.png");
 			
-			ImageIcon loginhelp = new ImageIcon("loginhelp.png");
-			JLabel loginhelpLabel = new JLabel(loginhelp);
+			//JLabel section2Label = new JLabel(section2);
 			
-			loginhelpLabel.addMouseListener(new MouseAdapter() {
-				public void mousePressed(MouseEvent ev) {
-					//loginhelpLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-					System.out.println("Click at: " + ev.getPoint());
-				}
-			});
-		
-		
-			imageDisplay.add(loginhelpLabel);
+			contentPane.add(section1Label);
+			//contentPane.add(section2Label);
+			
 			
 			
 			return imageDisplay;
@@ -140,7 +113,7 @@ import javax.swing.JPanel;
 		@Override
 		public void actionPerformed(ActionEvent ev) {
 			
-			if(ev.getSource()==backBtn) {
+			if(ev.getSource()==clearBtn) {
 				//System.exit(0);
 				LoginGUI frame = new LoginGUI();
 				frame.setTitle("Login");
@@ -149,3 +122,4 @@ import javax.swing.JPanel;
 		}
 	}
 }
+

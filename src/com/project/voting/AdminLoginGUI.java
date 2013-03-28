@@ -104,7 +104,14 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 		enterBtn.setBorder(null);
 		enterBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		enterBtn.setPressedIcon(new ImageIcon("enterpressed.png"));
-		enterBtn.addActionListener(this);
+		//enterBtn.addActionListener(this);
+		
+		enterBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev)
+            {
+				enterBtn_actionPerformed(ev);
+	        }
+			});
 		
 		contentPane.add(P_NoLabel);
 		contentPane.add(P_No);
@@ -159,24 +166,23 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		
-		/*if(ev.getSource()==enterBtn) {
-			//P_No.getText();
-			if(username = P_No) {
-				System.out.println("Success");
-			}
-		}
-			
-		
-	/*	if(ev.getSource()==Pass) {
-			//P_No.getText();
-			if(Pass.getText() == "4321") {
-				System.out.println("Success");
-			}
-		}*/
-		
-		//if(ev.getSource()==enterBtn) {
-		//P_No.getText();
-		
-	
 	}
+	
+	
+	private void enterBtn_actionPerformed(ActionEvent ev)
+    {
+        System.out.println("login event called.");
+        String username = new String(P_No.getText());
+        String password = new String(Pass.getText());
+    
+        if(username.equals("1234") && password.equals("4321")) 
+                {
+        	System.out.println("Success");
+                }
+        else
+        {
+        	System.out.println("Denied");
+        }
+
+}
 }
