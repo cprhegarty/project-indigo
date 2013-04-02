@@ -63,7 +63,7 @@ import javax.swing.JPanel;
 			
 			
 			
-			setIconImage(new ImageIcon("images/progicon.png").getImage()); 
+			setIconImage(new ImageIcon("progicon.png").getImage()); 
 			
 			//setBounds(0, 0, 550, 650);
 			setBounds(0, 0, 670, 980);
@@ -94,7 +94,7 @@ import javax.swing.JPanel;
 			
 	
 			
-            ImageIcon section1 = new ImageIcon("images/thankyou.png");
+            ImageIcon section1 = new ImageIcon("thankyou.png");
 			
 			JLabel section1Label = new JLabel(section1);
 			

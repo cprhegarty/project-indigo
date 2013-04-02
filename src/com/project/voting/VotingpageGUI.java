@@ -63,11 +63,11 @@ import javax.swing.JPanel;
 			
 			
 			
-			setIconImage(new ImageIcon("images/progicon.png").getImage()); 
+			setIconImage(new ImageIcon("progicon.png").getImage()); 
 			
 			//setBounds(0, 0, 550, 650);
 			setBounds(0, 0, 670, 980);
-			setResizable(false);
+			setResizable(true);
 			
 			
 			contentPane = createContentPane();
@@ -94,22 +94,22 @@ import javax.swing.JPanel;
 			
 	
 			
-            ImageIcon section1 = new ImageIcon("images/section1.png");
+            ImageIcon section1 = new ImageIcon("section1.png");
 			
 			JLabel section1Label = new JLabel(section1);
 			
-            ImageIcon section2 = new ImageIcon("images/section2.png");
+            ImageIcon section2 = new ImageIcon("section2.png");
 			
 			JLabel section2Label = new JLabel(section2);
 			
 			contentPane.add(section1Label);
 			contentPane.add(section2Label);
 			
-			ImageIcon clearImg = new ImageIcon("images/Election Not Pressed Clear Button Main Page.png");   
+			ImageIcon clearImg = new ImageIcon("Election Not Pressed Clear Button Main Page.png");   
 			clearBtn = new JButton(clearImg);
 			clearBtn.setBorder(null);
 			clearBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			clearBtn.setPressedIcon(new ImageIcon("images/Election Pressed Clear Button Main Page.png"));
+			clearBtn.setPressedIcon(new ImageIcon("Election Pressed Clear Button Main Page.png"));
 			clearBtn.addActionListener(this);
 			clearBtn.setPreferredSize(new Dimension(160, 130));
 			clearBtn.setLocation(10, 10);
@@ -117,11 +117,11 @@ import javax.swing.JPanel;
 			
 			contentPane.add(clearBtn);
 			
-			ImageIcon finishImg = new ImageIcon("images/Election Not Pressed Finish Button Main Page.png");   
+			ImageIcon finishImg = new ImageIcon("Election Not Pressed Finish Button Main Page.png");   
 			finishBtn = new JButton(finishImg);
 			finishBtn.setBorder(null);
 			finishBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			finishBtn.setPressedIcon(new ImageIcon("images/Election Pressed Finish Button Main Page.png"));
+			finishBtn.setPressedIcon(new ImageIcon("Election Pressed Finish Button Main Page.png"));
 			finishBtn.addActionListener(this);
 			finishBtn.setPreferredSize(new Dimension(160, 130));
 			finishBtn.setLocation(10, 10);
@@ -129,11 +129,11 @@ import javax.swing.JPanel;
 			
 			contentPane.add(finishBtn);
 			
-			ImageIcon helpImg = new ImageIcon("images/Election Not Pressed Help Button Main Page.png");   
+			ImageIcon helpImg = new ImageIcon("Election Not Pressed Help Button Main Page.png");   
 			helpBtn = new JButton(helpImg);
 			helpBtn.setBorder(null);
 			helpBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			helpBtn.setPressedIcon(new ImageIcon("images/Election Pressed Help Button Main Page.png"));
+			helpBtn.setPressedIcon(new ImageIcon("Election Pressed Help Button Main Page.png"));
 			helpBtn.addActionListener(this);
 			helpBtn.setPreferredSize(new Dimension(160, 130));
 			helpBtn.setLocation(10, 10);

@@ -200,12 +200,14 @@ public class LoginGUI extends JFrame implements ActionListener {
 			
 			//if login details are correct
 			if(connect.checkLogin(P_No.getText(), pwd)) {
-				//JOptionPane.showMessageDialog(null,"Welcome");
+				
 				VotingpageGUI frame = new VotingpageGUI();
 				frame.setTitle("Voting Page");
 				frame.getContentPane().setBackground(Color.WHITE);
 				frame.setVisible(true);
+				JOptionPane.showMessageDialog(null,"Welcome: " + P_No.getText());
 			}
+			
 			else
 	        {
 	        	JOptionPane.showMessageDialog(null,"Denied");
