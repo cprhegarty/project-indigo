@@ -75,7 +75,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setIconImage(new ImageIcon("progicon.png").getImage()); 
+		setIconImage(new ImageIcon("images/progicon.png").getImage()); 
 		
 		setBounds(0, 0, 550, 560);
 		setResizable(false);
@@ -101,11 +101,11 @@ public class LoginGUI extends JFrame implements ActionListener {
 		Pass.addActionListener(this);
 		
 		
-		ImageIcon enterImg = new ImageIcon("enterbutton.png");   
+		ImageIcon enterImg = new ImageIcon("images/enterbutton.png");   
 		enterBtn = new JButton(enterImg);
 		enterBtn.setBorder(null);
 		enterBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		enterBtn.setPressedIcon(new ImageIcon("enterpressed.png"));
+		enterBtn.setPressedIcon(new ImageIcon("images/enterpressed.png"));
 		
 		enterBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev)
@@ -115,11 +115,11 @@ public class LoginGUI extends JFrame implements ActionListener {
 			});
 
 		
-		ImageIcon helpImg = new ImageIcon("helpbutton.png");   
+		ImageIcon helpImg = new ImageIcon("images/helpbutton.png");   
 		helpBtn = new JButton(helpImg);
 		helpBtn.setBorder(null);
 		helpBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		helpBtn.setPressedIcon(new ImageIcon("helppressed.png"));
+		helpBtn.setPressedIcon(new ImageIcon("images/helppressed.png"));
 		helpBtn.addActionListener(this);
 		
 		contentPane.add(P_NoLabel);
@@ -149,7 +149,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 	public Container createImageDisplay()  {
 		
 		JPanel imageDisplay = new JPanel();
-		ImageIcon harpImage = new ImageIcon("harp.png");
+		ImageIcon harpImage = new ImageIcon("images/harp.png");
 		JLabel harpLabel = new JLabel(harpImage);
 		
 		imageDisplay.add(harpLabel);
@@ -201,10 +201,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 			//if login details are correct
 			if(connect.checkLogin(P_No.getText(), pwd)) {
 				
-				VotingpageGUI frame = new VotingpageGUI();
-				frame.setTitle("Voting Page");
-				frame.getContentPane().setBackground(Color.WHITE);
-				frame.setVisible(true);
+				VotingpageGUI.run(new VotingpageGUI(), 750, 760);
 				JOptionPane.showMessageDialog(null,"Welcome: " + P_No.getText());
 			}
 			

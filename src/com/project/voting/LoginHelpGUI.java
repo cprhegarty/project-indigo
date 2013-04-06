@@ -120,7 +120,7 @@ import javax.swing.JPanel;
 			
 			
 			
-			ImageIcon loginhelp = new ImageIcon("loginhelp.png");
+			ImageIcon loginhelp = new ImageIcon("images/loginhelp.png");
 			JLabel loginhelpLabel = new JLabel(loginhelp);
 			
 			loginhelpLabel.addMouseListener(new MouseAdapter() {

@@ -29,7 +29,7 @@ import oracle.jdbc.driver.*; //make sure this is in classpath
 	        	
 	            Class.forName("oracle.jdbc.driver.OracleDriver");
 	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "robindigo");
-	                        pst=con.prepareStatement("select * from administrators where alog=? and pass=?");
+	                        pst=con.prepareStatement("select * from voters where vtrid=? and password=?");
 	             
 	           }
 	        catch (Exception e) 
@@ -39,12 +39,12 @@ import oracle.jdbc.driver.*; //make sure this is in classpath
 	    }
 	    
 	        //username,password
-	    public Boolean checkLogin(String alog,String pass)
+	    public Boolean checkLogin(String vtrid, String password)
 	    {
 	        try {
 	                        
-	            pst.setString(1, alog); 
-	            pst.setString(2, pass);  
+	            pst.setString(1, vtrid); 
+	            pst.setString(2, password);  
 	           
 	            //executes the prepared statement
 	            rs=pst.executeQuery();

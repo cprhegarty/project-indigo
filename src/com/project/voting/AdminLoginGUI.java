@@ -76,7 +76,7 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 		 */
 		
 		
-		setIconImage(new ImageIcon("progicon.png").getImage()); 
+		setIconImage(new ImageIcon("images/progicon.png").getImage()); 
 		
 		setBounds(0, 0, 550, 560);
 		 setResizable(false);
@@ -99,11 +99,11 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 		Pass = new JPasswordField(10);
 		Pass.addActionListener(this);
 		
-		ImageIcon enterImg = new ImageIcon("enterbutton.png");   
+		ImageIcon enterImg = new ImageIcon("images/enterbutton.png");   
 		enterBtn = new JButton(enterImg);
 		enterBtn.setBorder(null);
 		enterBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		enterBtn.setPressedIcon(new ImageIcon("enterpressed.png"));
+		enterBtn.setPressedIcon(new ImageIcon("images/enterpressed.png"));
 		//enterBtn.addActionListener(this);
 		
 		enterBtn.addActionListener(new ActionListener() {
@@ -141,10 +141,10 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	public Container createImageDisplay()  {
 		JPanel imageDisplay = new JPanel();
 		
-		ImageIcon harpImage = new ImageIcon("harp.png");
+		ImageIcon harpImage = new ImageIcon("images/harp.png");
 		JLabel harpLabel = new JLabel(harpImage);
 		
-		ImageIcon loginImage = new ImageIcon("login.png");
+		ImageIcon loginImage = new ImageIcon("images/login.png");
 		JLabel loginLabel = new JLabel(loginImage);
 
 		imageDisplay.add(harpLabel);
