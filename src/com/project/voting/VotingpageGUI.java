@@ -212,6 +212,22 @@ private String[] description = { "","1", "2", "3",
         
       }
     });
+  
+  
+  cleared.addActionListener(new ActionListener() {
+	  public void actionPerformed(ActionEvent e) {
+		combo1.setSelectedIndex(0);
+		combo2.setSelectedIndex(0);
+		combo3.setSelectedIndex(0);
+		combo4.setSelectedIndex(0);
+		combo5.setSelectedIndex(0);
+		combo6.setSelectedIndex(0);
+		combo7.setSelectedIndex(0);
+		combo8.setSelectedIndex(0);
+	  }
+  });
+  
+  
     combo1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
     	  
