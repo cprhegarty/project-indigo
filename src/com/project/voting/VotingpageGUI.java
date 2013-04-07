@@ -13,6 +13,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.sql.DriverManager;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -198,8 +199,14 @@ private String[] description = { "","1", "2", "3",
     	  
     	  JOptionPane.showMessageDialog(null,""+ combo1.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo2.getSelectedIndex());
+    	  JOptionPane.showMessageDialog(null,""+ combo3.getSelectedIndex());
+    	  JOptionPane.showMessageDialog(null,""+ combo4.getSelectedIndex());
+    	  JOptionPane.showMessageDialog(null,""+ combo5.getSelectedIndex());
+    	  JOptionPane.showMessageDialog(null,""+ combo6.getSelectedIndex());
+    	  JOptionPane.showMessageDialog(null,""+ combo7.getSelectedIndex());
+    	  JOptionPane.showMessageDialog(null,""+ combo8.getSelectedIndex());
     	  
-        if (count < description.length)
+        if (count < description.length) {
         	combo1.addItem(description[count]);
         	combo2.addItem(description[count]);
         	combo3.addItem(description[count]);
@@ -209,7 +216,30 @@ private String[] description = { "","1", "2", "3",
         	combo7.addItem(description[count]);
         	combo8.addItem(description[count]);
           count++;
+      }
+  
         
+          
+          Connect connect = new Connect();
+          
+          try{
+	        	
+	            Class.forName("oracle.jdbc.driver.OracleDriver");
+	            connect.con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "robindigo");
+	                        connect.pst=connect.con.prepareStatement("insert into test_candidate (cname, pref) values ('Emma', '8')");
+	        	            
+	        	            connect.rs=connect.pst.executeQuery();
+	        	            
+	        	            ThankYouGUI frame = new ThankYouGUI();
+	        	            frame.setTitle("Thank You");
+	        				frame.getContentPane().setBackground(Color.WHITE);
+	        				frame.setVisible(true);
+	           }
+	        catch (Exception ev) 
+	        {
+	            System.out.println(ev);
+	        }
+	    
       }
     });
   
