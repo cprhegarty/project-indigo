@@ -56,6 +56,9 @@ private String[] description = { "","1", "2", "3",
   private JComboBox combo7 = new JComboBox();
   private JComboBox combo8 = new JComboBox();
   
+  
+  
+  
   //Creating Sound buttons
   
   JButton EmmaJohnsonBtn;
@@ -197,6 +200,7 @@ private String[] description = { "","1", "2", "3",
   cast.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
     	  
+    	
     	  JOptionPane.showMessageDialog(null,""+ combo1.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo2.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo3.getSelectedIndex());
@@ -205,6 +209,7 @@ private String[] description = { "","1", "2", "3",
     	  JOptionPane.showMessageDialog(null,""+ combo6.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo7.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo8.getSelectedIndex());
+    	  
     	  
         if (count < description.length) {
         	combo1.addItem(description[count]);
@@ -217,6 +222,21 @@ private String[] description = { "","1", "2", "3",
         	combo8.addItem(description[count]);
           count++;
       }
+        
+        
+        //casts index of combo boxes to int
+        
+        int getc1, getc2, getc3, getc4, getc5, getc6, getc7, getc8 = 0;
+        
+        getc1 = combo1.getSelectedIndex();
+        getc2 = combo2.getSelectedIndex();
+        getc3 = combo3.getSelectedIndex();
+        getc4 = combo4.getSelectedIndex();
+        getc5 = combo5.getSelectedIndex();
+        getc6 = combo6.getSelectedIndex();
+        getc7 = combo7.getSelectedIndex();
+        getc8 = combo8.getSelectedIndex();
+        
   
         
           
@@ -226,7 +246,9 @@ private String[] description = { "","1", "2", "3",
 	        	
 	            Class.forName("oracle.jdbc.driver.OracleDriver");
 	            connect.con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "robindigo");
-	                        connect.pst=connect.con.prepareStatement("insert into test_candidate (cname, pref) values ('Emma', '8')");
+	            
+	            
+	                        connect.pst=connect.con.prepareStatement("insert into test_vote values ('" + getc1 + "', '" + getc2 + "', '" + getc3 + "', '" + getc4 + "', '" + getc5 + "', '" + getc6 + "', '" + getc7 + "', '" + getc8 + "')");
 	        	            
 	        	            connect.rs=connect.pst.executeQuery();
 	        	            
