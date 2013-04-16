@@ -29,7 +29,10 @@ import oracle.jdbc.driver.*; //make sure this is in classpath
 	        	
 	            Class.forName("oracle.jdbc.driver.OracleDriver");
 	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "robindigo");
-	                        pst=con.prepareStatement("select * from voters where vtrid=? and password=?");
+	                       
+	                       // pst=con.prepareStatement("select * from voters where voted <> 1");
+	                        pst=con.prepareStatement("select * from voters where vtrid=? and password=? and voted is null");
+	       
 	             
 	           }
 	        catch (Exception e) 
@@ -44,7 +47,12 @@ import oracle.jdbc.driver.*; //make sure this is in classpath
 	        try {
 	                        
 	            pst.setString(1, vtrid); 
-	            pst.setString(2, password);  
+	            pst.setString(2, password);
+	            
+	           // pst.setInt(3, voted);
+	            
+	            
+	            
 	           
 	            //executes the prepared statement
 	            rs=pst.executeQuery();

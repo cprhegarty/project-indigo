@@ -9,6 +9,8 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
 
 import javax.swing.ImageIcon;
@@ -24,9 +26,11 @@ import javax.swing.JTextField;
 
 public class LoginGUI extends JFrame implements ActionListener {
 	
-	
+	public String votingid;
 	
 	static final long serialVersionUID = 1L;
+	
+	VotingpageGUI votingpagegui = new VotingpageGUI();
 	
 	Connect connect;
 	
@@ -42,6 +46,19 @@ public class LoginGUI extends JFrame implements ActionListener {
 	JButton enterBtn;
 	JButton enterpressedBtn;
 	JButton helpBtn;
+	
+	String voteid;
+	
+	public String getVoteid() {
+		voteid = "10";
+		JOptionPane.showMessageDialog(null,voteid);
+		return voteid;
+	}
+	
+	public void setVoteid(String voter) {
+		voteid = voter;
+		//voter = "Rob";
+	}
 
 
 	/**
@@ -196,19 +213,64 @@ public class LoginGUI extends JFrame implements ActionListener {
 			char[] temp_pwd = Pass.getPassword();
 			String pwd = null;
 			pwd = String.copyValueOf(temp_pwd);
-			System.out.println("Username,Pwd:"+P_No.getText()+","+pwd); System.out.println("Username,Pwd:"+P_No.getText()+","+pwd);
+			System.out.println("Username,Pwd:"+P_No.getText()+","+pwd); 
 			
 			//if login details are correct
 			if(connect.checkLogin(P_No.getText(), pwd)) {
 				
+			
 				VotingpageGUI.run(new VotingpageGUI(), 750, 760);
 				JOptionPane.showMessageDialog(null,"Welcome: " + P_No.getText());
+				
+				
+				 FileOutputStream out; // declare a file output object
+	                PrintStream p; // declare a print stream object
+
+	                try
+	                {
+	                        // Create a new file output stream
+	                        // connected to "myfile.txt"
+	                        out = new FileOutputStream("test.txt");
+
+	                        // Connect print stream to the output stream
+	                        p = new PrintStream( out );
+			
+	                        p.println (P_No.getText());
+
+	                        p.close();
+	                }
+	                catch (Exception e)
+	                {
+	                        System.err.println ("Error writing to file");
+	                }
+				
+				
+				
+				
 			}
 			
 			else
 	        {
 	        	JOptionPane.showMessageDialog(null,"Denied");
 	        }
+			
+		
+		
+		
+			
+			
 	
 	}
+		
+		
+		/*public String storevid(String vid) {
+		
+			
+			vid = "1";
+			VotingpageGUI bn = new VotingpageGUI(vid);
+			
+			//vid = P_No.getText();
+			
+			return vid;
+		}*/
 }

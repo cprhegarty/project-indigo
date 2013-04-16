@@ -12,7 +12,11 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.sql.DriverManager;
 
 import javax.sound.sampled.AudioInputStream;
@@ -82,7 +86,9 @@ private String[] description = { "","1", "2", "3",
 
   private int count = 0;
 
-  public void init() {
+  
+
+public void init() {
 	  
 	  
 	  
@@ -201,14 +207,14 @@ private String[] description = { "","1", "2", "3",
       public void actionPerformed(ActionEvent e) {
     	  
     	
-    	  JOptionPane.showMessageDialog(null,""+ combo1.getSelectedIndex());
+    	  /*JOptionPane.showMessageDialog(null,""+ combo1.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo2.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo3.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo4.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo5.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo6.getSelectedIndex());
     	  JOptionPane.showMessageDialog(null,""+ combo7.getSelectedIndex());
-    	  JOptionPane.showMessageDialog(null,""+ combo8.getSelectedIndex());
+    	  JOptionPane.showMessageDialog(null,""+ combo8.getSelectedIndex());*/
     	  
     	  
         if (count < description.length) {
@@ -227,6 +233,7 @@ private String[] description = { "","1", "2", "3",
         //casts index of combo boxes to int
         
         int getc1, getc2, getc3, getc4, getc5, getc6, getc7, getc8 = 0;
+        int voted =1;
         
         getc1 = combo1.getSelectedIndex();
         getc2 = combo2.getSelectedIndex();
@@ -238,17 +245,54 @@ private String[] description = { "","1", "2", "3",
         getc8 = combo8.getSelectedIndex();
         
   
-        
+        int voteno = 0;
           
           Connect connect = new Connect();
+          LoginGUI logingui = new LoginGUI();
+          
+          
+          try{
+        	  // Open the file that is the first 
+        	  // command line parameter
+        	  FileInputStream fstream = new FileInputStream("test.txt");
+        	  // Get the object of DataInputStream
+        	  DataInputStream in = new DataInputStream(fstream);
+        	  BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        	  String strLine;
+        	  //Read File Line By Line
+        	  while ((strLine = br.readLine()) != null)   {
+        	  // Print the content on the console
+        		 
+        		  voteno = Integer.valueOf(strLine);
+   	           
+        	  System.out.println (voteno);
+        
+        	  }
+        	  //Close the input stream
+        	  in.close();
+        	    }catch (Exception ev){//Catch exception if any
+        	  System.err.println("Error: " + ev.getMessage());
+        	  }
+    	    
+          
           
           try{
 	        	
 	            Class.forName("oracle.jdbc.driver.OracleDriver");
 	            connect.con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "robindigo");
 	            
+	         
 	            
-	                        connect.pst=connect.con.prepareStatement("insert into test_vote values ('" + getc1 + "', '" + getc2 + "', '" + getc3 + "', '" + getc4 + "', '" + getc5 + "', '" + getc6 + "', '" + getc7 + "', '" + getc8 + "')");
+	             
+	                        connect.pst=connect.con.prepareStatement("insert into test_vote values ('" + getc1 + "', '" + getc2 + "', '" + getc3 + "', '" + getc4 
+	                        		+ "', '" + getc5 + "', '" + getc6 + "', '" + getc7 + "', '" + getc8 + "' , '" + voted + "' ) ");
+	                        /*if(voteno==vtrid){
+	                        	
+	                        }
+	                        */
+	                        connect.pst=connect.con.prepareStatement("update voters set voted=1 where vtrid = "+voteno);
+	                        
+	                        
 	        	            
 	        	            connect.rs=connect.pst.executeQuery();
 	        	            
@@ -264,6 +308,8 @@ private String[] description = { "","1", "2", "3",
 	    
       }
     });
+  
+  
   
   
   cleared.addActionListener(new ActionListener() {
@@ -516,11 +562,25 @@ private String[] description = { "","1", "2", "3",
 			
   }
   
+  /*public String doSomething(LoginGUI logingui)
+  {  
+	  JOptionPane.showMessageDialog(null,logingui.getName());
+	     System.out.println("I've got the user passed in, so lets do something with it : " + logingui.getName()); 
+	     
+	     JOptionPane.showMessageDialog(null,logingui.P_No.getText());
+	     return logingui.getName();
+	     
+	    }  */
+  
+  
 
   public static void main(String[] args) {
     run(new VotingpageGUI(), 750, 760);
   }
-
+  
+  
+  
+  
   public static void run(JApplet applet, int width, int height) {
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -532,6 +592,9 @@ private String[] description = { "","1", "2", "3",
     frame.setVisible(true);
     frame.setBackground(Color.white);
     //frame.setResizable(false);
+   
   }
+  
+  
 } ///:~
 
