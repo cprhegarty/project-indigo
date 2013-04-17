@@ -282,14 +282,22 @@ public void init() {
 	            connect.con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "robindigo");
 	            
 	         
-	            
+	          
 	             
-	                        connect.pst=connect.con.prepareStatement("insert into test_vote values ('" + getc1 + "', '" + getc2 + "', '" + getc3 + "', '" + getc4 
-	                        		+ "', '" + getc5 + "', '" + getc6 + "', '" + getc7 + "', '" + getc8 + "' , '" + voted + "' ) ");
+	                        /*connect.pst=connect.con.prepareStatement("insert into test_vote values ('" + getc1 + "', '" + getc2 + "', '" + getc3 + "', '" + getc4 
+	                        		+ "', '" + getc5 + "', '" + getc6 + "', '" + getc7 + "', '" + getc8 + "' , '" + voted + "' ) ");*/
+	                        
+	                        
+	                        connect.pst=connect.con.prepareStatement("insert into voterprefs values ( '" + getc1 + "', '" + getc2 + "', '" + getc3 + "', '" + getc4 
+	                        		+ "', '" + getc5 + "', '" + getc6 + "', '" + getc7 + "', '" + getc8 + "') ");
+	                        
+	                        
 	                        /*if(voteno==vtrid){
 	                        	
-	                        }
-	                        */
+	                        }*/
+	                        
+	                        
+	                        connect.rs=connect.pst.executeQuery();
 	                        connect.pst=connect.con.prepareStatement("update voters set voted=1 where vtrid = "+voteno);
 	                        
 	                        
