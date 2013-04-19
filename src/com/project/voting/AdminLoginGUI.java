@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -23,8 +24,7 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	
 	static final long serialVersionUID = 1L;
 	
-	String username = "1234";
-	String password = "4321";
+	AdminConnect adminconnect;
 	
 	
 	
@@ -40,6 +40,7 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	JButton enterBtn;
 	JButton enterpressedBtn;
 	JButton helpBtn;
+	JButton backBtn;
 
 
 	/**
@@ -50,9 +51,9 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 			public void run() {
 				try {
 					AdminLoginGUI frame = new AdminLoginGUI();
-					frame.setTitle(" Administrator Login");
+					frame.setTitle("Administrator Login");
 		
-					 frame.getContentPane().setBackground(Color.CYAN);
+					 frame.getContentPane().setBackground(Color.white);
 					
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -68,6 +69,8 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	 * Create the main application window.
 	 */
 	public AdminLoginGUI() {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		/*
@@ -78,7 +81,7 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 		
 		setIconImage(new ImageIcon("images/progicon.png").getImage()); 
 		
-		setBounds(0, 0, 550, 560);
+		setBounds(0, 0, 750, 760);
 		 setResizable(false);
 		
 		contentPane = createContentPane();
@@ -95,9 +98,15 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 		
 		
 		PassLabel = new JLabel();
-		PassLabel.setText("Password:");
+		PassLabel.setText("           Password:");
 		Pass = new JPasswordField(10);
 		Pass.addActionListener(this);
+		
+		ImageIcon harpImage = new ImageIcon("images/admin login.png");
+		JLabel harpLabel = new JLabel(harpImage);
+		
+		ImageIcon harpImage2 = new ImageIcon("images/login section 2.png");
+		JLabel harpLabel2 = new JLabel(harpImage2);
 		
 		ImageIcon enterImg = new ImageIcon("images/enterbutton.png");   
 		enterBtn = new JButton(enterImg);
@@ -106,18 +115,47 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 		enterBtn.setPressedIcon(new ImageIcon("images/enterpressed.png"));
 		//enterBtn.addActionListener(this);
 		
+		ImageIcon helpImg = new ImageIcon("images/returnbutton.png");   
+		backBtn = new JButton(helpImg);
+		backBtn.setBorder(null);
+		backBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		backBtn.setPressedIcon(new ImageIcon("images/backpressed.png"));
+		backBtn.addActionListener(this);
+		
+		ImageIcon harpImage3 = new ImageIcon("images/login section 3.png");
+		JLabel harpLabel3 = new JLabel(harpImage3);
+		
+		
+		
+		
+		
 		enterBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev)
             {
 				enterBtn_actionPerformed(ev);
+				
+				if(ev.getSource()==backBtn) {
+					//System.exit(0);
+					LoginGUI frame = new LoginGUI();
+					frame.setTitle("Login");
+					frame.getContentPane().setBackground(Color.WHITE);
+					frame.setVisible(true);
+				}
+				
+					
+				
 	        }
 			});
 		
+		contentPane.add(harpLabel);
 		contentPane.add(P_NoLabel);
 		contentPane.add(P_No);
 		contentPane.add(PassLabel);
 		contentPane.add(Pass);
+		contentPane.add(harpLabel2);
 		contentPane.add(enterBtn);
+		contentPane.add(harpLabel3);
+		contentPane.add(backBtn);
 	}
 
 	
@@ -141,13 +179,13 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	public Container createImageDisplay()  {
 		JPanel imageDisplay = new JPanel();
 		
-		ImageIcon harpImage = new ImageIcon("images/harp.png");
-		JLabel harpLabel = new JLabel(harpImage);
+		//ImageIcon harpImage = new ImageIcon("images/harp.png");
+		//JLabel harpLabel = new JLabel(harpImage);
 		
-		ImageIcon loginImage = new ImageIcon("images/login.png");
-		JLabel loginLabel = new JLabel(loginImage);
+		//ImageIcon loginImage = new ImageIcon("images/login.png");
+		//JLabel loginLabel = new JLabel(loginImage);
 
-		imageDisplay.add(harpLabel);
+		//imageDisplay.add(harpLabel);
 		
 		return imageDisplay;
 	}
@@ -166,23 +204,38 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		
+		if(ev.getSource()==backBtn) {
+			//System.exit(0);
+			LoginGUI frame = new LoginGUI();
+			frame.setTitle("Login");
+			frame.getContentPane().setBackground(Color.WHITE);
+			frame.setVisible(true);
+	}
+		
 	}
 	
 	
 	private void enterBtn_actionPerformed(ActionEvent ev)
     {
-        System.out.println("login event called.");
-        String username = new String(P_No.getText());
-        String password = new String(Pass.getText());
-    
-        if(username.equals("1234") && password.equals("4321")) 
-                {
-        	System.out.println("Success");
-                }
-        else
+		char[] temp_pwd = Pass.getPassword();
+		String pwd = null;
+		pwd = String.copyValueOf(temp_pwd);
+		System.out.println("Username,Pwd:"+P_No.getText()+","+pwd); System.out.println("Username,Pwd:"+P_No.getText()+","+pwd);
+		
+		//if login details are correct
+		if(adminconnect.checkLogin(P_No.getText(), pwd)) {
+			
+			TheResultGUI frame = new TheResultGUI();
+			frame.setTitle("Results");
+			frame.getContentPane().setBackground(Color.WHITE);
+			frame.setVisible(true);
+			
+			JOptionPane.showMessageDialog(null,"Welcome: " + P_No.getText());
+		}
+		
+		else
         {
-        	System.out.println("Denied");
+        	JOptionPane.showMessageDialog(null,"Denied");
         }
-
 }
 }

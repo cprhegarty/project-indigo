@@ -9,8 +9,6 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 
 
 import javax.swing.ImageIcon;
@@ -26,11 +24,9 @@ import javax.swing.JTextField;
 
 public class LoginGUI extends JFrame implements ActionListener {
 	
-	public String votingid;
+	
 	
 	static final long serialVersionUID = 1L;
-	
-	VotingpageGUI votingpagegui = new VotingpageGUI();
 	
 	Connect connect;
 	
@@ -46,20 +42,10 @@ public class LoginGUI extends JFrame implements ActionListener {
 	JButton enterBtn;
 	JButton enterpressedBtn;
 	JButton helpBtn;
+	JButton adminBtn;
 	
-	String voteid;
-	
-	public String getVoteid() {
-		voteid = "10";
-		JOptionPane.showMessageDialog(null,voteid);
-		return voteid;
-	}
-	
-	public void setVoteid(String voter) {
-		voteid = voter;
-		//voter = "Rob";
-	}
-
+	static LoginGUI frame1 = new LoginGUI();
+	static LoginHelpGUI frame2 = new LoginHelpGUI();
 
 	/**
 	 * Launch the application.
@@ -68,12 +54,12 @@ public class LoginGUI extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginGUI frame = new LoginGUI();
-					frame.setTitle("Login");
+					//LoginGUI frame = new LoginGUI();
+					frame1.setTitle("Login");
 		
-					 frame.getContentPane().setBackground(Color.WHITE);
+					 frame1.getContentPane().setBackground(Color.WHITE);
 					
-					frame.setVisible(true);
+					frame1.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -94,7 +80,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 		
 		setIconImage(new ImageIcon("images/progicon.png").getImage()); 
 		
-		setBounds(0, 0, 550, 560);
+		setBounds(0, 0, 750, 760);
 		setResizable(false);
 		
 		contentPane = createContentPane();
@@ -112,10 +98,29 @@ public class LoginGUI extends JFrame implements ActionListener {
 		
 		
 		PassLabel = new JLabel();
-		PassLabel.setText("Password:");
+		PassLabel.setText("        Password:");
 		Pass = new JPasswordField(10);
 		Pass.setToolTipText("Please enter your Password");
 		Pass.addActionListener(this);
+		//
+		
+		
+		
+		
+		
+		
+		//enter = new JButton("Enter");
+		//help = new JButton("Help");
+		//help.addActionListener(this);
+		
+		ImageIcon harpImage = new ImageIcon("images/login section 1.png");
+		JLabel harpLabel = new JLabel(harpImage);
+		
+		ImageIcon harpImage2 = new ImageIcon("images/login section 2.png");
+		JLabel harpLabel2 = new JLabel(harpImage2);
+		//
+		
+		
 		
 		
 		ImageIcon enterImg = new ImageIcon("images/enterbutton.png");   
@@ -130,7 +135,9 @@ public class LoginGUI extends JFrame implements ActionListener {
 				enterBtn_actionPerformed(ev);
 	        }
 			});
-
+		
+		ImageIcon harpImage3 = new ImageIcon("images/login section 3.png");
+		JLabel harpLabel3 = new JLabel(harpImage3);
 		
 		ImageIcon helpImg = new ImageIcon("images/helpbutton.png");   
 		helpBtn = new JButton(helpImg);
@@ -139,12 +146,34 @@ public class LoginGUI extends JFrame implements ActionListener {
 		helpBtn.setPressedIcon(new ImageIcon("images/helppressed.png"));
 		helpBtn.addActionListener(this);
 		
+		ImageIcon harpImage4 = new ImageIcon("images/login section 4.png");
+		JLabel harpLabel4 = new JLabel(harpImage4);
+		
+		ImageIcon adminImg = new ImageIcon("images/admin button.png");   
+		adminBtn = new JButton(adminImg);
+		adminBtn.setBorder(null);
+		adminBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		adminBtn.setPressedIcon(new ImageIcon("images/admin button2.png"));
+		adminBtn.addActionListener(this);
+		/*
 		contentPane.add(P_NoLabel);
 		contentPane.add(P_No);
 		contentPane.add(PassLabel);
 		contentPane.add(Pass);
 		contentPane.add(enterBtn);
 		contentPane.add(helpBtn);
+		*/
+		contentPane.add(harpLabel);
+		contentPane.add(P_NoLabel);
+		contentPane.add(P_No);
+		contentPane.add(PassLabel);
+		contentPane.add(Pass);
+		contentPane.add(harpLabel2);
+		contentPane.add(enterBtn);
+		contentPane.add(harpLabel3);
+		contentPane.add(helpBtn);
+		contentPane.add(harpLabel4);
+		contentPane.add(adminBtn);
 	}
 
 	
@@ -166,10 +195,10 @@ public class LoginGUI extends JFrame implements ActionListener {
 	public Container createImageDisplay()  {
 		
 		JPanel imageDisplay = new JPanel();
-		ImageIcon harpImage = new ImageIcon("images/harp.png");
-		JLabel harpLabel = new JLabel(harpImage);
+		//ImageIcon harpImage = new ImageIcon("images/harp.png");
+		//JLabel harpLabel = new JLabel(harpImage);
 		
-		imageDisplay.add(harpLabel);
+		//imageDisplay.add(harpLabel);
 		
 		return imageDisplay;
 	}
@@ -180,11 +209,52 @@ public class LoginGUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ev) {
 		
 		if(ev.getSource()==helpBtn) {
+			
+			LoginHelpGUI frame1 = new LoginHelpGUI();
+			
+			//frame.setTitle("Login Help");
+			frame1.getContentPane().setBackground(Color.WHITE);
+			frame1.setVisible(true);
+			//frame1.setVisible(false);
+			
+			
+			//LoginHelpGUI frame = new LoginHelpGUI();
+			//contentPane.removeAll();
+			//contentPane.revalidate();
+			//contentPane.repaint();
+			//login.contentPane.repaint();
+			 
+			
+		//	getContentPane().removeAll();
+			
+			//startPanel = new StartPanel();
+			/*login.setVisible(true);
+			add(login);
+			revalidate();
+			repaint();*/
+			
+			
+			
+			
+			
+
+		}
+		
+		if(ev.getSource()==adminBtn) {
 			//System.exit(0);
-			LoginHelpGUI frame = new LoginHelpGUI();
-			frame.setTitle("Login Help");
+			
+			AdminLoginGUI frame = new AdminLoginGUI();
+			
+			frame.setTitle("Administrator Login");
 			frame.getContentPane().setBackground(Color.WHITE);
 			frame.setVisible(true);
+			frame1.setVisible(false);
+			
+		
+			
+			
+			
+			
 		}
 	}
 		
@@ -213,64 +283,19 @@ public class LoginGUI extends JFrame implements ActionListener {
 			char[] temp_pwd = Pass.getPassword();
 			String pwd = null;
 			pwd = String.copyValueOf(temp_pwd);
-			System.out.println("Username,Pwd:"+P_No.getText()+","+pwd); 
+			System.out.println("Username,Pwd:"+P_No.getText()+","+pwd); System.out.println("Username,Pwd:"+P_No.getText()+","+pwd);
 			
 			//if login details are correct
 			if(connect.checkLogin(P_No.getText(), pwd)) {
 				
-			
 				VotingpageGUI.run(new VotingpageGUI(), 750, 760);
 				JOptionPane.showMessageDialog(null,"Welcome: " + P_No.getText());
-				
-				
-				 FileOutputStream out; // declare a file output object
-	                PrintStream p; // declare a print stream object
-
-	                try
-	                {
-	                        // Create a new file output stream
-	                        // connected to "myfile.txt"
-	                        out = new FileOutputStream("test.txt");
-
-	                        // Connect print stream to the output stream
-	                        p = new PrintStream( out );
-			
-	                        p.println (P_No.getText());
-
-	                        p.close();
-	                }
-	                catch (Exception e)
-	                {
-	                        System.err.println ("Error writing to file");
-	                }
-				
-				
-				
-				
 			}
 			
 			else
 	        {
 	        	JOptionPane.showMessageDialog(null,"Denied");
 	        }
-			
-		
-		
-		
-			
-			
 	
 	}
-		
-		
-		/*public String storevid(String vid) {
-		
-			
-			vid = "1";
-			VotingpageGUI bn = new VotingpageGUI(vid);
-			
-			//vid = P_No.getText();
-			
-			return vid;
-		}*/
 }

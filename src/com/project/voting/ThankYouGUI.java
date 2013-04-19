@@ -33,7 +33,7 @@ import javax.swing.JPanel;
 		JButton clearBtn;
 		JButton finishBtn;
 		JButton backImg;
-		JButton helpBtn;
+		JButton pageBtn;
 		
 		
 		public static void main(String[] args) {
@@ -48,6 +48,15 @@ import javax.swing.JPanel;
 						
 						
 						frame.setVisible(true);
+						/*
+						wait(5);
+						
+						frame.setVisible(false);
+						LoginGUI frame1 = new LoginGUI();
+						frame1.setTitle("Login");
+						frame1.getContentPane().setBackground(Color.WHITE);
+						frame1.setVisible(true);
+						*/
 						
 						 
 						 
@@ -65,8 +74,8 @@ import javax.swing.JPanel;
 			
 			setIconImage(new ImageIcon("images/progicon.png").getImage()); 
 			
-			//setBounds(0, 0, 550, 650);
-			setBounds(0, 0, 670, 980);
+			setBounds(0, 0, 750, 760);
+			//setBounds(0, 0, 670, 980);
 			setResizable(false);
 			
 			
@@ -75,6 +84,8 @@ import javax.swing.JPanel;
 			
 			imagePane = (JPanel) createImageDisplay();
 			getContentPane().add(imagePane, BorderLayout.NORTH);
+			
+		
 			
 			
 		}
@@ -92,18 +103,25 @@ import javax.swing.JPanel;
 		public Container createImageDisplay()  {
 			JPanel imageDisplay = new JPanel();
 			
+			ImageIcon backImg = new ImageIcon("images/thankyou.png");   
+			pageBtn = new JButton(backImg);
+			pageBtn.setBorder(null);
+			pageBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			pageBtn.setPressedIcon(new ImageIcon("images/thankyou.png"));
+			pageBtn.addActionListener(this);
 	
 			
-            ImageIcon section1 = new ImageIcon("images/thankyou.png");
+            //ImageIcon section1 = new ImageIcon("images/thankyou.png");
 			
-			JLabel section1Label = new JLabel(section1);
+			//JLabel section1Label = new JLabel(section1);
 			
             //ImageIcon section2 = new ImageIcon("images/section2.png");
 			
 			//JLabel section2Label = new JLabel(section2);
 			
-			contentPane.add(section1Label);
+			//contentPane.add(section1Label);
 			//contentPane.add(section2Label);
+			contentPane.add(pageBtn);
 			
 			
 			
@@ -113,7 +131,7 @@ import javax.swing.JPanel;
 		@Override
 		public void actionPerformed(ActionEvent ev) {
 			
-			if(ev.getSource()==clearBtn) {
+			if(ev.getSource()==pageBtn) {
 				//System.exit(0);
 				LoginGUI frame = new LoginGUI();
 				frame.setTitle("Login");
