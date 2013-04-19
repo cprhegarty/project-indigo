@@ -235,6 +235,8 @@ public void init() {
         int getc1, getc2, getc3, getc4, getc5, getc6, getc7, getc8 = 0;
         int voted =1;
         
+        
+        
         getc1 = combo1.getSelectedIndex();
         getc2 = combo2.getSelectedIndex();
         getc3 = combo3.getSelectedIndex();
@@ -244,12 +246,20 @@ public void init() {
         getc7 = combo7.getSelectedIndex();
         getc8 = combo8.getSelectedIndex();
         
-  
         int voteno = 0;
+        
+        if(getc1!=getc2 && getc1!=getc3 && getc1!=getc4 && getc1!=getc5 && getc1!=getc6 && getc1!=getc7 && getc1!=getc8 && getc2!=getc3 && getc2!=getc4 && getc2!=getc5 && getc2!=getc6 && getc2!=getc7 && getc2!=getc8 && getc3!=getc4 && getc3!=getc5 && getc3!=getc6 && getc3!=getc7 && getc3!=getc8 && getc4!=getc5 && getc4!=getc6 && getc4!=getc7 && getc4!=getc8 && getc5!=getc6 && getc5!=getc7 && getc5!=getc8 && getc6!=getc7 && getc6!=getc8 && getc7!=getc8)
+        {
+       			
+        
+       
+        
+  
+        
           
           Connect connect = new Connect();
           LoginGUI logingui = new LoginGUI();
-          
+        
           
           try{
         	  // Open the file that is the first 
@@ -313,7 +323,19 @@ public void init() {
 	        {
 	            System.out.println(ev);
 	        }
-	    
+        }
+        else
+        {
+        	JOptionPane.showMessageDialog(null,"You cannot have duplicate preferences");
+        	combo1.setSelectedIndex(0);
+    		combo2.setSelectedIndex(0);
+    		combo3.setSelectedIndex(0);
+    		combo4.setSelectedIndex(0);
+    		combo5.setSelectedIndex(0);
+    		combo6.setSelectedIndex(0);
+    		combo7.setSelectedIndex(0);
+    		combo8.setSelectedIndex(0);
+        }
       }
     });
   
