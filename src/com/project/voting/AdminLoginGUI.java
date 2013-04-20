@@ -24,10 +24,6 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	
 	static final long serialVersionUID = 1L;
 	
-	AdminConnect adminconnect;
-	
-	
-	
 	JPanel contentPane;
 	JPanel imagePane;
 	
@@ -217,6 +213,8 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	
 	private void enterBtn_actionPerformed(ActionEvent ev)
     {
+		AdminConnect adminconnect = new AdminConnect();
+		
 		char[] temp_pwd = Pass.getPassword();
 		String pwd = null;
 		pwd = String.copyValueOf(temp_pwd);
