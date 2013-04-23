@@ -44,6 +44,8 @@ import javax.swing.JTextField;
 		int votecan6;
 		int votecan7;
 		int votecan8;
+		int quota =7;
+		int elected = 0;
 		
 		JPanel contentPane;
 		JPanel imagePane;
@@ -237,20 +239,171 @@ import javax.swing.JTextField;
 			    field1.setText(can1);
 			  votecan1 = Integer.parseInt(can1);
 			 
-			  if(votecan1>7)// where vote will be greater than quota
+			  if(votecan1>quota && elected < 3)// where vote will be greater than quota
 			  {
-				  field1.setText("seated"); 
+				  elected++;
+				  System.out.println("elected: " + elected);
+				  field1.setText("Elected"); 
 				  Connect connect = new Connect();
 				  try {
 					connect.pst=connect.con.prepareStatement("update candidates set seated=1 where fname = 'Emma' ");
 					connect.rs=connect.pst.executeQuery();
+					
+					
+					//Fred Cartman second preferences
+					connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and fred_cartman = 2");
+					connect.rs=connect.pst.executeQuery();
+					
+					
+					while (connect.rs.next()) {
+						System.out.println(connect.rs.getInt(1));
+						int ej_secpref1 = connect.rs.getInt(1);
+						System.out.println("S: " + ej_secpref1);
+						
+						int ej_second_counter1 = Integer.parseInt(can2);
+						System.out.println("can2: " + can2);
+						ej_second_counter1 = ej_second_counter1 + ej_secpref1;
+						System.out.println("ej_second_counter: " + ej_second_counter1);
+						
+						String testcan2 = Integer.toString(ej_second_counter1);
+						can2 = testcan2;
+					}
+					
+					///Homer Simpson second preferences
+					connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and homer_simpson = 2");
+					connect.rs=connect.pst.executeQuery();
+					
+					
+					while (connect.rs.next()) {
+						System.out.println(connect.rs.getInt(1));
+						int ej_secpref2 = connect.rs.getInt(1);
+						System.out.println("S2: " + ej_secpref2);
+						
+						int ej_second_counter2 = Integer.parseInt(can3);
+						System.out.println("can3: " + can3);
+						ej_second_counter2 = ej_second_counter2 + ej_secpref2;
+						System.out.println("secondpref2: " + ej_second_counter2);
+						
+						String testcan3 = Integer.toString(ej_second_counter2);
+						can3 = testcan3;
+					}
+					
+					
+					//John Goodman second preference
+					connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and john_goodman = 2");
+					connect.rs=connect.pst.executeQuery();
+					
+					
+					while (connect.rs.next()) {
+						System.out.println(connect.rs.getInt(1));
+						int ej_secpref3 = connect.rs.getInt(1);
+						System.out.println("S3: " + ej_secpref3);
+						
+						int ej_second_counter3 = Integer.parseInt(can4);
+						System.out.println("can4: " + can4);
+						ej_second_counter3 = ej_second_counter3 + ej_secpref3;
+						System.out.println("secondpref3: " + ej_second_counter3);
+						
+						String testcan4 = Integer.toString(ej_second_counter3);
+						can4 = testcan4;
+					}
+					
+					
+					
+					//Kim Dotcom second preference
+					connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and kim_dotcom = 2");
+					connect.rs=connect.pst.executeQuery();
+					
+					
+					while (connect.rs.next()) {
+						System.out.println(connect.rs.getInt(1));
+						int ej_secpref4 = connect.rs.getInt(1);
+						System.out.println("S4: " + ej_secpref4);
+						
+						int ej_second_counter4 = Integer.parseInt(can5);
+						System.out.println("can5: " + can5);
+						ej_second_counter4 = ej_second_counter4 + ej_secpref4;
+						System.out.println("secondpref4: " + ej_second_counter4);
+						
+						String testcan5 = Integer.toString(ej_second_counter4);
+						can5 = testcan5;
+					}
+					
+					
+					//Patrick Reilly second preference
+					connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and patrick_reilly = 2");
+					connect.rs=connect.pst.executeQuery();
+					
+					
+					while (connect.rs.next()) {
+						System.out.println(connect.rs.getInt(1));
+						int ej_secpref5 = connect.rs.getInt(1);
+						System.out.println("S5: " + ej_secpref5);
+						
+						int ej_second_counter5 = Integer.parseInt(can6);
+						System.out.println("can6: " + can6);
+						ej_second_counter5 = ej_second_counter5 + ej_secpref5;
+						System.out.println("secondpref5: " + ej_second_counter5);
+						
+						String testcan6 = Integer.toString(ej_second_counter5);
+						can6 = testcan6;
+					}
+					
+					
+					//Sean Barrett second preference
+					connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and sean_barrett = 2");
+					connect.rs=connect.pst.executeQuery();
+					
+					
+					while (connect.rs.next()) {
+						System.out.println(connect.rs.getInt(1));
+						int ej_secpref6 = connect.rs.getInt(1);
+						System.out.println("S6: " + ej_secpref6);
+						
+						int ej_second_counter6 = Integer.parseInt(can7);
+						System.out.println("can7: " + can7);
+						ej_second_counter6 = ej_second_counter6 + ej_secpref6;
+						System.out.println("secondpref6: " + ej_second_counter6);
+						
+						String testcan7 = Integer.toString(ej_second_counter6);
+						can7 = testcan7;
+					}
+					
+					
+					//Jessica Alba second preference
+					connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and jessica_alba = 2");
+					connect.rs=connect.pst.executeQuery();
+					
+					
+					while (connect.rs.next()) {
+						System.out.println(connect.rs.getInt(1));
+						int ej_secpref7 = connect.rs.getInt(1);
+						System.out.println("S7: " + ej_secpref7);
+						
+						int ej_second_counter7 = Integer.parseInt(can8);
+						System.out.println("can8: " + can8);
+						ej_second_counter7 = ej_second_counter7 + ej_secpref7;
+						System.out.println("secondpref7: " + ej_second_counter7);
+						
+						String testcan8 = Integer.toString(ej_second_counter7);
+						can8 = testcan8;
+					}
+					
+					
+					
+					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					{
+					
+
+			
+					}
+					
 				}
                
   	          
-					
 				
 				
 				  
@@ -265,9 +418,175 @@ import javax.swing.JTextField;
 			   field2.setText(can2);
 			   votecan2 = Integer.parseInt(can2);
 				 
-				  if(votecan2>7)// where vote will be greater than quota
+				  if(votecan2>6 && elected < 3)// where vote will be greater than quota
 				  {
-					  field2.setText("seated");  
+					  elected++;
+					  System.out.println("elected: " + elected);
+					  field2.setText("Elected"); 
+					  
+					  try {
+						  
+						  
+
+							//Emma Johnson second preference
+						  
+						  Connect connect = new Connect();
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where fred_cartman = 1 and emma_johnson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int fc_secpref1 = connect.rs.getInt(1);
+								System.out.println("S17: " + fc_secpref1);
+								
+								int fc_second_counter1 = Integer.parseInt(can1);
+								System.out.println("dhgchjsgdchjggchjsdh: " + can1);
+								fc_second_counter1 = fc_second_counter1 + fc_secpref1;
+								System.out.println("secondpref7: " + fc_second_counter1);
+								
+								String testcan18 = Integer.toString(fc_second_counter1);
+								can1 = testcan18;
+							}
+							
+						  
+						  
+						  
+						  
+						  
+						//Fred Cartman second preferences
+						connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where fred_cartman = 1 and homer_simpson = 2");
+						connect.rs=connect.pst.executeQuery();
+						
+						
+						while (connect.rs.next()) {
+							System.out.println(connect.rs.getInt(1));
+							int fc_secpref2 = connect.rs.getInt(1);
+							System.out.println("S: " + fc_secpref2);
+							
+							int fc_second_counter2 = Integer.parseInt(can3);
+							System.out.println("can3: " + can3);
+							fc_second_counter2 = fc_second_counter2 + fc_secpref2;
+							System.out.println("secondpref: " + fc_second_counter2);
+							
+							String testcan12 = Integer.toString(fc_second_counter2);
+							can3 = testcan12;
+						}
+						
+						///Homer Simpson second preferences
+						connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where fred_cartman = 1 and john_goodman = 2");
+						connect.rs=connect.pst.executeQuery();
+						
+						
+						while (connect.rs.next()) {
+							System.out.println(connect.rs.getInt(1));
+							int fc_secpref3 = connect.rs.getInt(1);
+							System.out.println("S2: " + fc_secpref3);
+							
+							int fc_second_counter3 = Integer.parseInt(can3);
+							System.out.println("can3: " + can3);
+							fc_second_counter3 = fc_second_counter3 + fc_secpref3;
+							System.out.println("secondpref2: " + fc_second_counter3);
+							
+							String testcan13 = Integer.toString(fc_second_counter3);
+							can3 = testcan13;
+						}
+						
+						
+						//John Goodman second preference
+						connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where fred_cartman = 1 and kim_dotcom = 2");
+						connect.rs=connect.pst.executeQuery();
+						
+						
+						while (connect.rs.next()) {
+							System.out.println(connect.rs.getInt(1));
+							int fc_secpref4 = connect.rs.getInt(1);
+							System.out.println("S3: " + fc_secpref4);
+							
+							int fc_second_counter4 = Integer.parseInt(can4);
+							System.out.println("can4: " + can4);
+							fc_second_counter4 = fc_second_counter4 + fc_secpref4;
+							System.out.println("secondpref3: " + fc_second_counter4);
+							
+							String testcan14 = Integer.toString(fc_second_counter4);
+							can4 = testcan14;
+						}
+						
+						
+						
+						//Kim Dotcom second preference
+						connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where fred_cartman = 1 and patrick_reilly = 2");
+						connect.rs=connect.pst.executeQuery();
+						
+						
+						while (connect.rs.next()) {
+							System.out.println(connect.rs.getInt(1));
+							int fc_secpref5 = connect.rs.getInt(1);
+							System.out.println("S4: " + fc_secpref5);
+							
+							int fc_second_counter5 = Integer.parseInt(can5);
+							System.out.println("can5: " + can5);
+							fc_second_counter5 = fc_second_counter5 + fc_secpref5;
+							System.out.println("secondpref4: " + fc_second_counter5);
+							
+							String testcan15 = Integer.toString(fc_second_counter5);
+							can5 = testcan15;
+						}
+						
+						
+						//Patrick Reilly second preference
+						connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where fred_cartman = 1 and sean_barrett = 2");
+						connect.rs=connect.pst.executeQuery();
+						
+						
+						while (connect.rs.next()) {
+							System.out.println(connect.rs.getInt(1));
+							int fc_secpref6 = connect.rs.getInt(1);
+							System.out.println("S5: " + fc_secpref6);
+							
+							int fc_second_counter6 = Integer.parseInt(can6);
+							System.out.println("can6: " + can6);
+							fc_second_counter6 = fc_second_counter6 + fc_secpref6;
+							System.out.println("secondpref5: " + fc_second_counter6);
+							
+							String testcan16 = Integer.toString(fc_second_counter6);
+							can6 = testcan16;
+						}
+						
+						
+						//Sean Barrett second preference
+						connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where fred_cartman = 1 and jessica_alba = 2");
+						connect.rs=connect.pst.executeQuery();
+						
+						
+						while (connect.rs.next()) {
+							System.out.println(connect.rs.getInt(1));
+							int fc_secpref7 = connect.rs.getInt(1);
+							System.out.println("S6: " + fc_secpref7);
+							
+							int fc_second_counter7 = Integer.parseInt(can7);
+							System.out.println("can7: " + can7);
+							fc_second_counter7= fc_second_counter7 + fc_secpref7;
+							System.out.println("secondpref6: " + fc_second_counter7);
+							
+							String testcan17 = Integer.toString(fc_second_counter7);
+							can7 = testcan17;
+						}
+						
+						
+						
+						
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						{
+						
+
+				
+						}
+						
+					}
 				  }
 			    field2.setFont(myfont);
 			    field2.setHorizontalAlignment(JTextField.CENTER);
@@ -279,9 +598,168 @@ import javax.swing.JTextField;
 			    field3.setText(can3);
 			    votecan3 = Integer.parseInt(can3);
 				 
-				  if(votecan3>7)// where vote will be greater than quota
+				  if(votecan3>1 && elected < 3)// where vote will be greater than quota
 				  {
-					  field3.setText("seated");  
+					  elected++;
+					  System.out.println("elected: " + elected);
+					  field3.setText("Elected");
+					  
+					  try {
+						  
+						  	Connect connect = new Connect();
+						  	connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where homer_simpson = 1 and emma_johnson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s3 = connect.rs.getInt(1);
+								System.out.println("S3: " + s3);
+								
+								int secondpref3 = Integer.parseInt(can4);
+								System.out.println("can4: " + can4);
+								secondpref3 = secondpref3 + s3;
+								System.out.println("secondpref3: " + secondpref3);
+								
+								String testcan4 = Integer.toString(secondpref3);
+								can4 = testcan4;
+							}
+						  
+						  
+							//fred cartman second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where homer_simpson = 1 and fred_cartman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s = connect.rs.getInt(1);
+								System.out.println("S: " + s);
+								
+								int secondpref = Integer.parseInt(can2);
+								System.out.println("can2: " + can2);
+								secondpref = secondpref + s;
+								System.out.println("secondpref: " + secondpref);
+								
+								String testcan2 = Integer.toString(secondpref);
+								can2 = testcan2;
+							}
+							
+							
+							//John Goodman second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where homer_simpson = 1 and john_goodman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s3 = connect.rs.getInt(1);
+								System.out.println("S3: " + s3);
+								
+								int secondpref3 = Integer.parseInt(can4);
+								System.out.println("can4: " + can4);
+								secondpref3 = secondpref3 + s3;
+								System.out.println("secondpref3: " + secondpref3);
+								
+								String testcan4 = Integer.toString(secondpref3);
+								can4 = testcan4;
+							}
+							
+							
+							
+							//Kim Dotcom second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where homer_simpson = 1 and kim_dotcom = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s4 = connect.rs.getInt(1);
+								System.out.println("S4: " + s4);
+								
+								int secondpref4 = Integer.parseInt(can5);
+								System.out.println("can5: " + can5);
+								secondpref4 = secondpref4 + s4;
+								System.out.println("secondpref4: " + secondpref4);
+								
+								String testcan5 = Integer.toString(secondpref4);
+								can5 = testcan5;
+							}
+							
+							
+							//Patrick Reilly second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where homer_simpson = 1 and patrick_reilly = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s5 = connect.rs.getInt(1);
+								System.out.println("S5: " + s5);
+								
+								int secondpref5 = Integer.parseInt(can6);
+								System.out.println("can6: " + can6);
+								secondpref5 = secondpref5 + s5;
+								System.out.println("secondpref5: " + secondpref5);
+								
+								String testcan6 = Integer.toString(secondpref5);
+								can6 = testcan6;
+							}
+							
+							
+							//Sean Barrett second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where homer_simpson = 1 and sean_barrett = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s6 = connect.rs.getInt(1);
+								System.out.println("S6: " + s6);
+								
+								int secondpref6 = Integer.parseInt(can7);
+								System.out.println("can7: " + can7);
+								secondpref6 = secondpref6 + s6;
+								System.out.println("secondpref6: " + secondpref6);
+								
+								String testcan7 = Integer.toString(secondpref6);
+								can7 = testcan7;
+							}
+							
+							
+							//Jessica Alba second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where homer_simpson = 1 and jessica_alba = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s7 = connect.rs.getInt(1);
+								System.out.println("S7: " + s7);
+								
+								int secondpref7 = Integer.parseInt(can8);
+								System.out.println("can8: " + can8);
+								secondpref7 = secondpref7 + s7;
+								System.out.println("secondpref7: " + secondpref7);
+								
+								String testcan8 = Integer.toString(secondpref7);
+								can8 = testcan8;
+							}
+							
+							
+							
+							
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							{
+							
+
+					
+							}
+							
+						}
+					  
 				  }
 			    field3.setFont(myfont);
 			    field3.setHorizontalAlignment(JTextField.CENTER);
@@ -293,9 +771,169 @@ import javax.swing.JTextField;
 			    field4.setText(can4);
 			    votecan4 = Integer.parseInt(can4);
 				 
-				  if(votecan4>7)// where vote will be greater than quota
+				  if(votecan4>7 && elected < 3)// where vote will be greater than quota
 				  {
-					  field4.setText("seated");  
+					  elected++;
+					  System.out.println("elected: " + elected);
+					  field4.setText("Elected"); 
+					  
+					  try {
+						  
+						  // emma johnson
+						  Connect connect = new Connect();
+						  connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where john_goodman = 1 and emma_johnson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s3 = connect.rs.getInt(1);
+								System.out.println("S3: " + s3);
+								
+								int secondpref3 = Integer.parseInt(can1);
+								System.out.println("can4: " + can1);
+								secondpref3 = secondpref3 + s3;
+								System.out.println("secondpref3: " + secondpref3);
+								
+								String testcan4 = Integer.toString(secondpref3);
+								can1 = testcan4;
+							}
+						  
+						  
+						  
+							//Fred Cartman second preferences
+							  
+						  	
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where john_goodman = 1 and fred_cartman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s = connect.rs.getInt(1);
+								System.out.println("S: " + s);
+								
+								int secondpref = Integer.parseInt(can2);
+								System.out.println("can2: " + can2);
+								secondpref = secondpref + s;
+								System.out.println("secondpref: " + secondpref);
+								
+								String testcan2 = Integer.toString(secondpref);
+								can2 = testcan2;
+							}
+							
+							///Homer Simpson second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where john_goodman = 1 and homer_simpson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s2 = connect.rs.getInt(1);
+								System.out.println("S2: " + s2);
+								
+								int secondpref2 = Integer.parseInt(can3);
+								System.out.println("can3: " + can3);
+								secondpref2 = secondpref2 + s2;
+								System.out.println("secondpref2: " + secondpref2);
+								
+								String testcan3 = Integer.toString(secondpref2);
+								can3 = testcan3;
+							}
+							
+							//Kim Dotcom second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where john_goodman = 1 and kim_dotcom = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s4 = connect.rs.getInt(1);
+								System.out.println("S4: " + s4);
+								
+								int secondpref4 = Integer.parseInt(can5);
+								System.out.println("can5: " + can5);
+								secondpref4 = secondpref4 + s4;
+								System.out.println("secondpref4: " + secondpref4);
+								
+								String testcan5 = Integer.toString(secondpref4);
+								can5 = testcan5;
+							}
+							
+							
+							//Patrick Reilly second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where john_goodman = 1 and patrick_reilly = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s5 = connect.rs.getInt(1);
+								System.out.println("S5: " + s5);
+								
+								int secondpref5 = Integer.parseInt(can6);
+								System.out.println("can6: " + can6);
+								secondpref5 = secondpref5 + s5;
+								System.out.println("secondpref5: " + secondpref5);
+								
+								String testcan6 = Integer.toString(secondpref5);
+								can6 = testcan6;
+							}
+							
+							
+							//Sean Barrett second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where john_goodman = 1 and sean_barrett = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s6 = connect.rs.getInt(1);
+								System.out.println("S6: " + s6);
+								
+								int secondpref6 = Integer.parseInt(can7);
+								System.out.println("can7: " + can7);
+								secondpref6 = secondpref6 + s6;
+								System.out.println("secondpref6: " + secondpref6);
+								
+								String testcan7 = Integer.toString(secondpref6);
+								can7 = testcan7;
+							}
+							
+							
+							//Jessica Alba second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where john_goodman = 1 and jessica_alba = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s7 = connect.rs.getInt(1);
+								System.out.println("S7: " + s7);
+								
+								int secondpref7 = Integer.parseInt(can8);
+								System.out.println("can8: " + can8);
+								secondpref7 = secondpref7 + s7;
+								System.out.println("secondpref7: " + secondpref7);
+								
+								String testcan8 = Integer.toString(secondpref7);
+								can8 = testcan8;
+							}
+							
+							
+							
+							
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							{
+							
+
+					
+							}
+							
+						
+					  }
 				  }
 			    field4.setFont(myfont);
 			    field4.setHorizontalAlignment(JTextField.CENTER);
@@ -307,9 +945,168 @@ import javax.swing.JTextField;
 			   field5.setText(can5);
 			   votecan5 = Integer.parseInt(can5);
 				 
-				  if(votecan5>7)// where vote will be greater than quota
+				  if(votecan5>7 && elected < 3)// where vote will be greater than quota
 				  {
-					  field5.setText("seated");  
+					  elected ++;
+					  System.out.println("elected: " + elected);
+					  field5.setText("Elected");  
+					  
+					  try {
+						  	
+						//Emma_Johnson second preference
+						  Connect connect = new Connect();
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where Emma_Johnson = 1 and emma_johnson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s4 = connect.rs.getInt(1);
+								System.out.println("S4: " + s4);
+								
+								int secondpref4 = Integer.parseInt(can1);
+								System.out.println("can1: " + can1);
+								secondpref4 = secondpref4 + s4;
+								System.out.println("secondpref4: " + secondpref4);
+								
+								String testcan5 = Integer.toString(secondpref4);
+								can1 = testcan5;
+							}
+					   
+					  
+							//Fred Cartman second preferences
+							 
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where kim_dotcom = 1 and fred_cartman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s = connect.rs.getInt(1);
+								System.out.println("S: " + s);
+								
+								int secondpref = Integer.parseInt(can2);
+								System.out.println("can2: " + can2);
+								secondpref = secondpref + s;
+								System.out.println("secondpref: " + secondpref);
+								
+								String testcan2 = Integer.toString(secondpref);
+								can2 = testcan2;
+							}
+							
+							///Homer Simpson second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where kim_dotcom = 1 and homer_simpson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s2 = connect.rs.getInt(1);
+								System.out.println("S2: " + s2);
+								
+								int secondpref2 = Integer.parseInt(can3);
+								System.out.println("can3: " + can3);
+								secondpref2 = secondpref2 + s2;
+								System.out.println("secondpref2: " + secondpref2);
+								
+								String testcan3 = Integer.toString(secondpref2);
+								can3 = testcan3;
+							}
+							
+							
+							//John Goodman second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where kim_dotcom = 1 and john_goodman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s3 = connect.rs.getInt(1);
+								System.out.println("S3: " + s3);
+								
+								int secondpref3 = Integer.parseInt(can4);
+								System.out.println("can4: " + can4);
+								secondpref3 = secondpref3 + s3;
+								System.out.println("secondpref3: " + secondpref3);
+								
+								String testcan4 = Integer.toString(secondpref3);
+								can4 = testcan4;
+							}
+							
+							
+							//Patrick Reilly second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where kim_dotcom = 1 and patrick_reilly = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s5 = connect.rs.getInt(1);
+								System.out.println("S5: " + s5);
+								
+								int secondpref5 = Integer.parseInt(can6);
+								System.out.println("can6: " + can6);
+								secondpref5 = secondpref5 + s5;
+								System.out.println("secondpref5: " + secondpref5);
+								
+								String testcan6 = Integer.toString(secondpref5);
+								can6 = testcan6;
+							}
+							
+							
+							//Sean Barrett second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where kim_dotcom = 1 and sean_barrett = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s6 = connect.rs.getInt(1);
+								System.out.println("S6: " + s6);
+								
+								int secondpref6 = Integer.parseInt(can7);
+								System.out.println("can7: " + can7);
+								secondpref6 = secondpref6 + s6;
+								System.out.println("secondpref6: " + secondpref6);
+								
+								String testcan7 = Integer.toString(secondpref6);
+								can7 = testcan7;
+							}
+							
+							
+							//Jessica Alba second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where kim_dotcom = 1 and jessica_alba = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s7 = connect.rs.getInt(1);
+								System.out.println("S7: " + s7);
+								
+								int secondpref7 = Integer.parseInt(can8);
+								System.out.println("can8: " + can8);
+								secondpref7 = secondpref7 + s7;
+								System.out.println("secondpref7: " + secondpref7);
+								
+								String testcan8 = Integer.toString(secondpref7);
+								can8 = testcan8;
+							}
+							
+							
+							
+							
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							{
+							
+
+					
+							}
+							
+						}
+					  
 				  }
 			    field5.setFont(myfont);
 			    field5.setHorizontalAlignment(JTextField.CENTER);
@@ -321,9 +1118,168 @@ import javax.swing.JTextField;
 			    field6.setText(can6);
 			    votecan6 = Integer.parseInt(can6);
 				 
-				  if(votecan6>7)// where vote will be greater than quota
+				  if(votecan6>7 && elected < 3)// where vote will be greater than quota
 				  {
-					  field6.setText("seated");  
+					  elected ++;
+					  System.out.println("elected: " + elected);
+					  field6.setText("Elected");  
+					  
+					 try {
+					 
+						 
+						//Patrick Reilly second preference
+						 	Connect connect = new Connect();
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where patrick_reilly = 1 and Emma_Johnson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s5 = connect.rs.getInt(1);
+								System.out.println("S5: " + s5);
+								
+								int secondpref5 = Integer.parseInt(can1);
+								System.out.println("can1: " + can1);
+								secondpref5 = secondpref5 + s5;
+								System.out.println("secondpref5: " + secondpref5);
+								
+								String testcan6 = Integer.toString(secondpref5);
+								can1 = testcan6;
+							}
+						 
+							//Fred Cartman second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where patrick_reilly = 1 and fred_cartman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s = connect.rs.getInt(1);
+								System.out.println("S: " + s);
+								
+								int secondpref = Integer.parseInt(can2);
+								System.out.println("can2: " + can2);
+								secondpref = secondpref + s;
+								System.out.println("secondpref: " + secondpref);
+								
+								String testcan2 = Integer.toString(secondpref);
+								can2 = testcan2;
+							}
+							
+							///Homer Simpson second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where patrick_reilly = 1 and homer_simpson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s2 = connect.rs.getInt(1);
+								System.out.println("S2: " + s2);
+								
+								int secondpref2 = Integer.parseInt(can3);
+								System.out.println("can3: " + can3);
+								secondpref2 = secondpref2 + s2;
+								System.out.println("secondpref2: " + secondpref2);
+								
+								String testcan3 = Integer.toString(secondpref2);
+								can3 = testcan3;
+							}
+							
+							
+							//John Goodman second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where patrick_reilly = 1 and john_goodman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s3 = connect.rs.getInt(1);
+								System.out.println("S3: " + s3);
+								
+								int secondpref3 = Integer.parseInt(can4);
+								System.out.println("can4: " + can4);
+								secondpref3 = secondpref3 + s3;
+								System.out.println("secondpref3: " + secondpref3);
+								
+								String testcan4 = Integer.toString(secondpref3);
+								can4 = testcan4;
+							}
+							
+							
+							
+							//Kim Dotcom second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where patrick_reilly = 1 and kim_dotcom = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s4 = connect.rs.getInt(1);
+								System.out.println("S4: " + s4);
+								
+								int secondpref4 = Integer.parseInt(can5);
+								System.out.println("can5: " + can5);
+								secondpref4 = secondpref4 + s4;
+								System.out.println("secondpref4: " + secondpref4);
+								
+								String testcan5 = Integer.toString(secondpref4);
+								can5 = testcan5;
+							}
+							
+							
+							//Sean Barrett second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where patrick_reilly = 1 and sean_barrett = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s6 = connect.rs.getInt(1);
+								System.out.println("S6: " + s6);
+								
+								int secondpref6 = Integer.parseInt(can7);
+								System.out.println("can7: " + can7);
+								secondpref6 = secondpref6 + s6;
+								System.out.println("secondpref6: " + secondpref6);
+								
+								String testcan7 = Integer.toString(secondpref6);
+								can7 = testcan7;
+							}
+							
+							
+							//Jessica Alba second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where patrick_reilly = 1 and jessica_alba = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s7 = connect.rs.getInt(1);
+								System.out.println("S7: " + s7);
+								
+								int secondpref7 = Integer.parseInt(can8);
+								System.out.println("can8: " + can8);
+								secondpref7 = secondpref7 + s7;
+								System.out.println("secondpref7: " + secondpref7);
+								
+								String testcan8 = Integer.toString(secondpref7);
+								can8 = testcan8;
+							}
+							
+							
+							
+							
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							{
+							
+
+					
+							}
+							
+						}
+					  
 				  }
 			    field6.setFont(myfont);
 			    field6.setHorizontalAlignment(JTextField.CENTER);
@@ -335,9 +1291,170 @@ import javax.swing.JTextField;
 			    field7.setText(can7);
 			    votecan7 = Integer.parseInt(can7);
 				 
-				  if(votecan7>7)// where vote will be greater than quota
+				  if(votecan7>7 && elected < 3)// where vote will be greater than quota
 				  {
-					  field7.setText("seated");  
+					  elected ++;
+					  System.out.println("elected: " + elected);
+					  field7.setText("Elected");
+					  
+					  try {
+					   
+
+							//Sean Barrett second preference
+						    Connect connect = new Connect();
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where sean_barrett = 1 and Emma_Johnson  = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s6 = connect.rs.getInt(1);
+								System.out.println("S6: " + s6);
+								
+								int secondpref6 = Integer.parseInt(can1);
+								System.out.println("can1: " + can1);
+								secondpref6 = secondpref6 + s6;
+								System.out.println("secondpref6: " + secondpref6);
+								
+								String testcan7 = Integer.toString(secondpref6);
+								can1 = testcan7;
+							}
+							
+						  		
+						  
+							//Fred Cartman second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where sean_barrett = 1 and fred_cartman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s = connect.rs.getInt(1);
+								System.out.println("S: " + s);
+								
+								int secondpref = Integer.parseInt(can2);
+								System.out.println("can2: " + can2);
+								secondpref = secondpref + s;
+								System.out.println("secondpref: " + secondpref);
+								
+								String testcan2 = Integer.toString(secondpref);
+								can2 = testcan2;
+							}
+							
+							///Homer Simpson second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where sean_barrett = 1 and homer_simpson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s2 = connect.rs.getInt(1);
+								System.out.println("S2: " + s2);
+								
+								int secondpref2 = Integer.parseInt(can3);
+								System.out.println("can3: " + can3);
+								secondpref2 = secondpref2 + s2;
+								System.out.println("secondpref2: " + secondpref2);
+								
+								String testcan3 = Integer.toString(secondpref2);
+								can3 = testcan3;
+							}
+							
+							
+							//John Goodman second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where sean_barrett = 1 and john_goodman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s3 = connect.rs.getInt(1);
+								System.out.println("S3: " + s3);
+								
+								int secondpref3 = Integer.parseInt(can4);
+								System.out.println("can4: " + can4);
+								secondpref3 = secondpref3 + s3;
+								System.out.println("secondpref3: " + secondpref3);
+								
+								String testcan4 = Integer.toString(secondpref3);
+								can4 = testcan4;
+							}
+							
+							
+							
+							//Kim Dotcom second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where sean_barrett = 1 and kim_dotcom = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s4 = connect.rs.getInt(1);
+								System.out.println("S4: " + s4);
+								
+								int secondpref4 = Integer.parseInt(can5);
+								System.out.println("can5: " + can5);
+								secondpref4 = secondpref4 + s4;
+								System.out.println("secondpref4: " + secondpref4);
+								
+								String testcan5 = Integer.toString(secondpref4);
+								can5 = testcan5;
+							}
+							
+							
+							//Patrick Reilly second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where sean_barrett = 1 and patrick_reilly = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s5 = connect.rs.getInt(1);
+								System.out.println("S5: " + s5);
+								
+								int secondpref5 = Integer.parseInt(can6);
+								System.out.println("can6: " + can6);
+								secondpref5 = secondpref5 + s5;
+								System.out.println("secondpref5: " + secondpref5);
+								
+								String testcan6 = Integer.toString(secondpref5);
+								can6 = testcan6;
+							}
+							
+							
+							//Jessica Alba second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where sean_barrett = 1 and jessica_alba = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s7 = connect.rs.getInt(1);
+								System.out.println("S7: " + s7);
+								
+								int secondpref7 = Integer.parseInt(can8);
+								System.out.println("can8: " + can8);
+								secondpref7 = secondpref7 + s7;
+								System.out.println("secondpref7: " + secondpref7);
+								
+								String testcan8 = Integer.toString(secondpref7);
+								can8 = testcan8;
+							}
+							
+							
+							
+							
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							{
+							
+
+					
+							}
+							
+						}
+					  
 				  }
 			    field7.setFont(myfont);
 			    field7.setHorizontalAlignment(JTextField.CENTER);
@@ -351,7 +1468,165 @@ import javax.swing.JTextField;
 				 
 				  if(votecan8>7)// where vote will be greater than quota
 				  {
-					  field8.setText("seated");  
+					  field8.setText("Elected"); 
+					  
+					 try {
+					  
+						 
+						//Emma_Johnson second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where jessica_alba = 1 and Emma_Johnson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s7 = connect.rs.getInt(1);
+								System.out.println("S7: " + s7);
+								
+								int secondpref7 = Integer.parseInt(can8);
+								System.out.println("can8: " + can8);
+								secondpref7 = secondpref7 + s7;
+								System.out.println("secondpref7: " + secondpref7);
+								
+								String testcan8 = Integer.toString(secondpref7);
+								can8 = testcan8;
+							}
+							//Fred Cartman second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where jessica_alba = 1 and fred_cartman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s = connect.rs.getInt(1);
+								System.out.println("S: " + s);
+								
+								int secondpref = Integer.parseInt(can2);
+								System.out.println("can2: " + can2);
+								secondpref = secondpref + s;
+								System.out.println("secondpref: " + secondpref);
+								
+								String testcan2 = Integer.toString(secondpref);
+								can2 = testcan2;
+							}
+							
+							///Homer Simpson second preferences
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where jessica_alba = 1 and homer_simpson = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s2 = connect.rs.getInt(1);
+								System.out.println("S2: " + s2);
+								
+								int secondpref2 = Integer.parseInt(can3);
+								System.out.println("can3: " + can3);
+								secondpref2 = secondpref2 + s2;
+								System.out.println("secondpref2: " + secondpref2);
+								
+								String testcan3 = Integer.toString(secondpref2);
+								can3 = testcan3;
+							}
+							
+							
+							//John Goodman second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where jessica_alba = 1 and john_goodman = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s3 = connect.rs.getInt(1);
+								System.out.println("S3: " + s3);
+								
+								int secondpref3 = Integer.parseInt(can4);
+								System.out.println("can4: " + can4);
+								secondpref3 = secondpref3 + s3;
+								System.out.println("secondpref3: " + secondpref3);
+								
+								String testcan4 = Integer.toString(secondpref3);
+								can4 = testcan4;
+							}
+							
+							
+							
+							//Kim Dotcom second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where jessica_alba = 1 and kim_dotcom = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s4 = connect.rs.getInt(1);
+								System.out.println("S4: " + s4);
+								
+								int secondpref4 = Integer.parseInt(can5);
+								System.out.println("can5: " + can5);
+								secondpref4 = secondpref4 + s4;
+								System.out.println("secondpref4: " + secondpref4);
+								
+								String testcan5 = Integer.toString(secondpref4);
+								can5 = testcan5;
+							}
+							
+							
+							//Patrick Reilly second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where jessica_alba = 1 and patrick_reilly = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s5 = connect.rs.getInt(1);
+								System.out.println("S5: " + s5);
+								
+								int secondpref5 = Integer.parseInt(can6);
+								System.out.println("can6: " + can6);
+								secondpref5 = secondpref5 + s5;
+								System.out.println("secondpref5: " + secondpref5);
+								
+								String testcan6 = Integer.toString(secondpref5);
+								can6 = testcan6;
+							}
+							
+							
+							//Sean Barrett second preference
+							connect.pst = connect.con.prepareStatement("select count (rowid) from voterprefs where jessica_alba = 1 and sean_barrett = 2");
+							connect.rs=connect.pst.executeQuery();
+							
+							
+							while (connect.rs.next()) {
+								System.out.println(connect.rs.getInt(1));
+								int s6 = connect.rs.getInt(1);
+								System.out.println("S6: " + s6);
+								
+								int secondpref6 = Integer.parseInt(can7);
+								System.out.println("can7: " + can7);
+								secondpref6 = secondpref6 + s6;
+								System.out.println("secondpref6: " + secondpref6);
+								
+								String testcan7 = Integer.toString(secondpref6);
+								can7 = testcan7;
+							}
+							
+							
+							
+							
+							
+							
+							
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							{
+							
+
+					
+							}
+							
+						}
+					  
 				  }
 			    field8.setFont(myfont);
 			    field8.setHorizontalAlignment(JTextField.CENTER);
@@ -529,7 +1804,9 @@ import javax.swing.JTextField;
 				int seats = 3;
 				int quota = 0;
 				int total=0;
-				int i=1;
+				int i=1; //column
+				
+				String rowid = "AAAE/wAABAAAK=5AAI";
 				
 				
 				
@@ -540,7 +1817,7 @@ import javax.swing.JTextField;
 				//connect.pst=connect.con.prepareStatement("update candidates set total = " + total);
 
 				while (connect.rs.next()) {
-					System.out.println(connect.rs.getInt(1));
+					//System.out.println(connect.rs.getInt(1));
 
 					
 					
@@ -555,8 +1832,8 @@ import javax.swing.JTextField;
 					if (i==2)
 					{
 						can1 =connect.rs.getString(1);
-						//System.out.println("can1: " + can1);
-						System.out.println("Seated: ");
+						System.out.println("can1: " + can1);
+						
 						System.out.println("Emma Johnson");
 					
 					}
@@ -566,6 +1843,8 @@ import javax.swing.JTextField;
 						can2 =connect.rs.getString(1);
 						System.out.println("can2: " + can2);
 						System.out.println("Fred Cartman");
+						
+						
 					}
 					
 					if (i==4)
@@ -607,10 +1886,12 @@ import javax.swing.JTextField;
 					
 					total++;
 					i++;
-					quota = total / seats;
-					 
-					System.out.println("can1: " + can1);
-					field1.setText(can1);
+					//quota = total / seats;
+					quota=7;
+					
+					System.out.println("quota" + quota);
+					
+					//field1.setText(can1);
 					
 				}
 				

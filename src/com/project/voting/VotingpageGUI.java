@@ -74,6 +74,8 @@ private String[] description = { "","1", "2", "3",
   JButton PatrickReillyBtn;
   JButton SeanBarrettBtn;
   
+  JButton helpBtn;
+  
  
   
  
@@ -101,10 +103,14 @@ public void init() {
 	  cast.setBackground(Color.white);
 	   cast.setBorder(null);
 	   
-		ImageIcon help = new ImageIcon("images/help.png");
-		   JButton Help = new JButton(help);
-		   Help.setBackground(Color.white);
-		   Help.setBorder(null);
+		ImageIcon helpImg = new ImageIcon("images/help.png");
+		helpBtn = new JButton(helpImg);
+		  helpBtn.setBorder(null);
+		  helpBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		  helpBtn.setPressedIcon(new ImageIcon("images/help.png"));
+		  helpBtn.addActionListener(this);
+		  helpBtn.setBackground(Color.white);
+		  helpBtn.setBorder(null);
 		   
 			ImageIcon clear = new ImageIcon("images/clear.png");
 			   JButton cleared = new JButton(clear);
@@ -302,7 +308,7 @@ public void init() {
 	                        		+ "', '" + getc5 + "', '" + getc6 + "', '" + getc7 + "', '" + getc8 + "') ");
 	                        
 	                        
-	                        /*if(voteno==vtrid){
+	                        /*if==vtrid){
 	                        	
 	                        }*/
 	                        
@@ -479,7 +485,7 @@ public void init() {
     cp.add(JessicaAlbaBtn);
     cp.add(combo8);
     
-    cp.add(Help);
+    cp.add(helpBtn);
     cp.add(cleared);
     cp.add(cast);
    
@@ -589,6 +595,17 @@ public void init() {
 	            ex.printStackTrace();
 	        }
 	    }
+	    
+	    
+	    
+	    if(ev.getSource()==helpBtn) {
+			//System.exit(0);
+			
+			VoteHelpGUI frame = new VoteHelpGUI();
+			frame.setTitle("Voting Help");
+			frame.getContentPane().setBackground(Color.WHITE);
+			frame.setVisible(true);
+		}
 			
   }
   
@@ -613,6 +630,7 @@ public void init() {
   
   public static void run(JApplet applet, int width, int height) {
     JFrame frame = new JFrame();
+    frame.setIconImage(new ImageIcon("images/progicon.png").getImage()); 
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().add(applet);
     frame.setSize(width, height);

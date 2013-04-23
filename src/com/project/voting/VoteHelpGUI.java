@@ -148,12 +148,8 @@ import javax.swing.JPanel;
 		public void actionPerformed(ActionEvent ev) {
 			
 			if(ev.getSource()==backBtn) {
-				//System.exit(0);
-				VotingpageGUI frame = new VotingpageGUI();
-				//frame.setTitle("Login");
-				frame.getContentPane().setBackground(Color.WHITE);
-				frame.setVisible(true);
-				frame2.setVisible(false);
+				dispose();
+				VotingpageGUI.run(new VotingpageGUI(), 750, 760);
 		}
 	}
 }

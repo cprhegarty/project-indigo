@@ -9,6 +9,8 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
 
 import javax.swing.ImageIcon;
@@ -296,6 +298,28 @@ public class LoginGUI extends JFrame implements ActionListener {
 				
 				VotingpageGUI.run(new VotingpageGUI(), 750, 760);
 				JOptionPane.showMessageDialog(null,"Welcome: " + P_No.getText());
+				
+				FileOutputStream out; // declare a file output object
+                PrintStream p; // declare a print stream object
+
+                try
+                {
+                        // Create a new file output stream
+                        // connected to "myfile.txt"
+                        out = new FileOutputStream("test.txt");
+
+                        // Connect print stream to the output stream
+                        p = new PrintStream( out );
+
+                        p.println (P_No.getText());
+
+                        p.close();
+                }
+                catch (Exception e)
+                {
+                        System.err.println ("Error writing to file");
+                }
+
 			}
 			
 			else
