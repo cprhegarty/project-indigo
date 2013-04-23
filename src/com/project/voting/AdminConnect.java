@@ -1,79 +1,47 @@
 package com.project.voting;
 
-	import java.sql.*;
-	import java.awt.Color;
-	import java.awt.event.ActionEvent;
-	import java.awt.event.ActionListener;
-	import java.io.*;
-	import java.lang.*;
+import java.sql.*;
 
-	import javax.swing.JFrame;
+public class AdminConnect {
+	Connection con;
+	PreparedStatement pst;
+	ResultSet rs; //Stores query result
 
-	import oracle.jdbc.driver.*; //make sure this is in classpath
+	AdminConnect() {
+		try {
 
-		
-		public class AdminConnect 
-		{
-		    Connection con;
-		    PreparedStatement pst;
-		    ResultSet rs;
-		    /*String servername = "localhost";
-		    String portnumber = "1521";
-		    String sid = "xe";
-		    */
-		    
-		    AdminConnect()
-		    {
-		        try{
-		        	
-		            Class.forName("oracle.jdbc.driver.OracleDriver");
-		            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "robindigo");
-		                       
-		                       // pst=con.prepareStatement("select * from voters where voted <> 1");
-		                        pst=con.prepareStatement("select * from administrators where alog=? and pass=?");
-		       
-		             
-		           }
-		        catch (Exception e) 
-		        {
-		            System.out.println(e);
-		        }
-		    }
-		    
-		        //username,password
-		    public Boolean checkLogin(String alog, String pass)
-		    {
-		        try {
-		                        
-		            pst.setString(1, alog); 
-		            pst.setString(2, pass);
-		            
-		           // pst.setInt(3, voted);
-		            
-		            
-		            
-		           
-		            //executes the prepared statement
-		            rs=pst.executeQuery();
-		            if(rs.next())
-		            {
-		                //TRUE if the query finds any corresponding data
-		                return true;
-		            }
-		            else
-		            {
-		                return false;
-		            }
-		        } catch (Exception e) {
-		            // TODO Auto-generated catch block
-		            System.out.println("error while validating"+e);
-		            return false;
-		        }
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //dB driver which is included as .jar file in project
+			con = DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:xe", "system",  //Change these if using different account, port, or service
+					"robindigo");
+
+			pst = con
+					.prepareStatement("select * from administrators where alog=? and pass=?"); //Checks username and password in administrators table
+
+		} catch (Exception e) {
+			System.out.println(e);
 		}
-		    	        
-		       
 	}
-		    
-		
 
+	public Boolean checkLogin(String alog, String pass) {  
+		try {
 
+			pst.setString(1, alog);
+			pst.setString(2, pass);
+
+			// executes the prepared statement
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				// TRUE if the query finds any corresponding data
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("error while validating" + e);
+			return false;
+		}
+	}
+
+}
