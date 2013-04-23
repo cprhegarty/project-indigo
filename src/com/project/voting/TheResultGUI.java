@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.sound.sampled.AudioInputStream;
@@ -34,6 +35,15 @@ import javax.swing.JTextField;
 	public class TheResultGUI extends JFrame implements ActionListener {
 		
 		static final long serialVersionUID = 1L;
+		
+		int votecan1;
+		int votecan2;
+		int votecan3;
+		int votecan4;
+		int votecan5;
+		int votecan6;
+		int votecan7;
+		int votecan8;
 		
 		JPanel contentPane;
 		JPanel imagePane;
@@ -225,6 +235,26 @@ import javax.swing.JTextField;
 			    contentPane.add(image1);
 			    contentPane.add(EmmaJohnsonBtn);
 			    field1.setText(can1);
+			  votecan1 = Integer.parseInt(can1);
+			 
+			  if(votecan1>7)// where vote will be greater than quota
+			  {
+				  field1.setText("seated"); 
+				  Connect connect = new Connect();
+				  try {
+					connect.pst=connect.con.prepareStatement("update candidates set seated=1 where fname = 'Emma' ");
+					connect.rs=connect.pst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+               
+  	          
+					
+				
+				
+				  
+			  }
 			    field1.setFont(myfont);
 			    field1.setHorizontalAlignment(JTextField.CENTER);
 			    field1.setEditable(false);
@@ -233,6 +263,12 @@ import javax.swing.JTextField;
 			   contentPane.add(image2);
 			   contentPane.add(FredCartmanBtn);
 			   field2.setText(can2);
+			   votecan2 = Integer.parseInt(can2);
+				 
+				  if(votecan2>7)// where vote will be greater than quota
+				  {
+					  field2.setText("seated");  
+				  }
 			    field2.setFont(myfont);
 			    field2.setHorizontalAlignment(JTextField.CENTER);
 			    field2.setEditable(false);
@@ -241,6 +277,12 @@ import javax.swing.JTextField;
 			    contentPane.add(image3);
 			    contentPane.add(HomerSimpsonBtn);
 			    field3.setText(can3);
+			    votecan3 = Integer.parseInt(can3);
+				 
+				  if(votecan3>7)// where vote will be greater than quota
+				  {
+					  field3.setText("seated");  
+				  }
 			    field3.setFont(myfont);
 			    field3.setHorizontalAlignment(JTextField.CENTER);
 			    field3.setEditable(false);
@@ -249,6 +291,12 @@ import javax.swing.JTextField;
 			    contentPane.add(image4);
 			    contentPane.add(JohnGoodmanBtn);
 			    field4.setText(can4);
+			    votecan4 = Integer.parseInt(can4);
+				 
+				  if(votecan4>7)// where vote will be greater than quota
+				  {
+					  field4.setText("seated");  
+				  }
 			    field4.setFont(myfont);
 			    field4.setHorizontalAlignment(JTextField.CENTER);
 			    field4.setEditable(false);
@@ -257,6 +305,12 @@ import javax.swing.JTextField;
 			   contentPane.add(image5);
 			   contentPane.add(KimDotcomBtn);
 			   field5.setText(can5);
+			   votecan5 = Integer.parseInt(can5);
+				 
+				  if(votecan5>7)// where vote will be greater than quota
+				  {
+					  field5.setText("seated");  
+				  }
 			    field5.setFont(myfont);
 			    field5.setHorizontalAlignment(JTextField.CENTER);
 			    field5.setEditable(false);
@@ -265,6 +319,12 @@ import javax.swing.JTextField;
 			    contentPane.add(image6);
 			    contentPane.add(PatrickReillyBtn);
 			    field6.setText(can6);
+			    votecan6 = Integer.parseInt(can6);
+				 
+				  if(votecan6>7)// where vote will be greater than quota
+				  {
+					  field6.setText("seated");  
+				  }
 			    field6.setFont(myfont);
 			    field6.setHorizontalAlignment(JTextField.CENTER);
 			    field6.setEditable(false);
@@ -273,6 +333,12 @@ import javax.swing.JTextField;
 			    contentPane.add(image7);
 			    contentPane.add(SeanBarrettBtn);
 			    field7.setText(can7);
+			    votecan7 = Integer.parseInt(can7);
+				 
+				  if(votecan7>7)// where vote will be greater than quota
+				  {
+					  field7.setText("seated");  
+				  }
 			    field7.setFont(myfont);
 			    field7.setHorizontalAlignment(JTextField.CENTER);
 			    field7.setEditable(false);
@@ -281,6 +347,12 @@ import javax.swing.JTextField;
 			    contentPane.add(image8);
 			    contentPane.add(JessicaAlbaBtn);
 			    field8.setText(can8);
+			    votecan8 = Integer.parseInt(can8);
+				 
+				  if(votecan8>7)// where vote will be greater than quota
+				  {
+					  field8.setText("seated");  
+				  }
 			    field8.setFont(myfont);
 			    field8.setHorizontalAlignment(JTextField.CENTER);
 			    field8.setEditable(false);
@@ -323,6 +395,8 @@ import javax.swing.JTextField;
 		public void actionPerformed(ActionEvent ev) {
 			
 			if(ev.getSource()==backBtn) {
+				
+				dispose();
 				LoginGUI frame = new LoginGUI();
 				frame.setTitle("Login");
 				frame.getContentPane().setBackground(Color.WHITE);
@@ -481,8 +555,10 @@ import javax.swing.JTextField;
 					if (i==2)
 					{
 						can1 =connect.rs.getString(1);
-						System.out.println("can1: " + can1);
+						//System.out.println("can1: " + can1);
+						System.out.println("Seated: ");
 						System.out.println("Emma Johnson");
+					
 					}
 					
 					if (i==3)

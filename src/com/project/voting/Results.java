@@ -121,7 +121,8 @@ public class Results extends JFrame {
 				if (i==2)
 				{
 					String can2 =connect.rs.getString(1);
-					System.out.println("can2: " + can2);
+					//System.out.println("can2: " + can2);
+					System.out.println("Seated: ");
 					System.out.println("Emma Johnson");
 				}
 				

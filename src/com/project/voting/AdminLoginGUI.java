@@ -201,11 +201,15 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent ev) {
 		
 		if(ev.getSource()==backBtn) {
-			//System.exit(0);
+			
+			dispose();
+			
 			LoginGUI frame = new LoginGUI();
 			frame.setTitle("Login");
 			frame.getContentPane().setBackground(Color.WHITE);
 			frame.setVisible(true);
+			
+			
 	}
 		
 	}
@@ -222,6 +226,8 @@ public class AdminLoginGUI extends JFrame implements ActionListener {
 		
 		//if login details are correct
 		if(adminconnect.checkLogin(P_No.getText(), pwd)) {
+			
+			dispose();
 			
 			TheResultGUI frame = new TheResultGUI();
 			frame.setTitle("Results");

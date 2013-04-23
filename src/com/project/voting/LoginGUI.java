@@ -210,6 +210,8 @@ public class LoginGUI extends JFrame implements ActionListener {
 		
 		if(ev.getSource()==helpBtn) {
 			
+			dispose();
+			
 			LoginHelpGUI frame1 = new LoginHelpGUI();
 			
 			//frame.setTitle("Login Help");
@@ -242,6 +244,8 @@ public class LoginGUI extends JFrame implements ActionListener {
 		
 		if(ev.getSource()==adminBtn) {
 			//System.exit(0);
+			
+			dispose();
 			
 			AdminLoginGUI frame = new AdminLoginGUI();
 			
@@ -287,6 +291,8 @@ public class LoginGUI extends JFrame implements ActionListener {
 			
 			//if login details are correct
 			if(connect.checkLogin(P_No.getText(), pwd)) {
+				
+				dispose();
 				
 				VotingpageGUI.run(new VotingpageGUI(), 750, 760);
 				JOptionPane.showMessageDialog(null,"Welcome: " + P_No.getText());

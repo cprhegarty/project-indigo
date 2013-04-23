@@ -133,6 +133,8 @@ import javax.swing.JPanel;
 			
 			if(ev.getSource()==pageBtn) {
 				//System.exit(0);
+				dispose();
+				
 				LoginGUI frame = new LoginGUI();
 				frame.setTitle("Login");
 				frame.getContentPane().setBackground(Color.WHITE);
